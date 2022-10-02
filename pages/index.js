@@ -1,23 +1,38 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
+import presentDeclension from './components/present/indicative'
 
 export default function Home() {
 
-
-  const presentDeclension = (verb) => {
-    let declension = ""
-    verb.match(/.ω$/) ? declension = "thematic" : declension = "athematic";
-    console.log(declension);
-    if (declension = "thematic") {
-      const stem = verb.slice(0, -1)
-      const present = `${stem + "ω"}, ${stem + "εις"}, ${stem + "ει"}, 
-      ${stem + "ομεν"}, ${stem + "ετε"}, ${stem + "ουσιν"}`
-      return present
-    }
-  }
+  //const presentDeclension = (verb, active, passive) => {
+  //  let declension = ""
+  //  verb.match(/.ω$/) ? declension = "thematic" : declension = "athematic";
+  //  console.log(declension);
+  //  if (declension = "thematic" && active && passive) {
+  //    let stem = verb.slice(0, -1)
+  //    let presentActive = `${stem + "ω"} ${stem + "εις"} ${stem + "ει"} 
+  //    ${stem + "ομεν"} ${stem + "ετε"} ${stem + "ουσιν"}`
+  //    let presentPassive = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} 
+  //    ${stem + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
+  //    return (<div><p>{presentActive}</p><p>{presentPassive}</p></div>)
+  //  }
+  //  else if (passive) {
+  //    let stem = verb.slice(0, -1)
+  //    let presentPassive = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} 
+  //    ${stem + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
+  //    return (<div><p></p><p>{presentPassive}</p></div>)
+  //  }
+  //}
 
   const [verb, setVerb] = useState("")
+  const [present, setPresentDeclension] = useState("")
+  const [active, setActive] = useState(false)
+  const [passive, setPassive] = useState(false)
+  const [indicative, setIndicative] = useState(false)
+  const handleActive = () => {setActive(!active), console.log(active)}
+  const handlePassive = () => {setPassive(!passive), console.log(passive)}
+  const handleIndicative = () => {setIndicative(!indicative), console.log(indicative)}
 
   return (
     <div className={styles.container}>
@@ -30,19 +45,23 @@ export default function Home() {
         <h1 className={styles.title}>
           Smart Verb Declenator
         </h1>
-        <form>
           <fieldset>
-            <input type="text" onChange={(e) => setVerb(e.target.value)} value={verb} />
+            <input id='verb' type="text" onChange={(e) => setVerb(e.target.value)} value={verb} />
             <div>
-              <input id='thematic' type="radio" name="declension" checked />
-              <label for='thematic'>Thematic Declension</label>
-              <input id='athematic' type="radio" name="declension" />
-              <label for='athematic'>Athematic Declension</label>
+              <input id='active' type="checkbox" name="declension" onClick={handleActive}/>
+              <label for='active'>Active</label>
+              </div>
+              <div>
+              <input id='passive' type="checkbox" name="declension" onClick={handlePassive}/>
+              <label for='passive'>Passive</label>
             </div>
-            <button>Submit</button>
+            <div>
+              <input id='indicative' type="checkbox" name="declension" onClick={handleIndicative}/>
+              <label for='indicative'>Indicative</label>
+            </div>
           </fieldset>
-        </form>
-        <div>{presentDeclension(verb)}</div>
+        <button for="verb" onClick={() => setPresentDeclension(presentDeclension(verb, active, passive, indicative))}>Submit</button>
+        <div>{present}</div>
       </main>
     </div>
   )
