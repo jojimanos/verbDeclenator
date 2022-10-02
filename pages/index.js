@@ -30,9 +30,9 @@ export default function Home() {
   const [active, setActive] = useState(false)
   const [passive, setPassive] = useState(false)
   const [indicative, setIndicative] = useState(false)
-  const handleActive = () => {setActive(!active), console.log(active)}
-  const handlePassive = () => {setPassive(!passive), console.log(passive)}
-  const handleIndicative = () => {setIndicative(!indicative), console.log(indicative)}
+  const handleActive = () => { setActive(!active), console.log(active) }
+  const handlePassive = () => { setPassive(!passive), console.log(passive) }
+  const handleIndicative = () => { setIndicative(!indicative), console.log(indicative) }
 
   return (
     <div className={styles.container}>
@@ -45,21 +45,21 @@ export default function Home() {
         <h1 className={styles.title}>
           Smart Verb Declenator
         </h1>
-          <fieldset>
-            <input id='verb' type="text" onChange={(e) => setVerb(e.target.value)} value={verb} />
-            <div>
-              <input id='active' type="checkbox" name="declension" onClick={handleActive}/>
-              <label for='active'>Active</label>
-              </div>
-              <div>
-              <input id='passive' type="checkbox" name="declension" onClick={handlePassive}/>
-              <label for='passive'>Passive</label>
-            </div>
-            <div>
-              <input id='indicative' type="checkbox" name="declension" onClick={handleIndicative}/>
-              <label for='indicative'>Indicative</label>
-            </div>
-          </fieldset>
+        <fieldset>
+          <input required id='verb' type="text" onChange={(e) => setVerb(e.target.value)} value={verb} />
+          <div>
+            <input required id='active' type="checkbox" name="declension" onClick={handleActive} />
+            <label for='active'>Active</label>
+          </div>
+          <div>
+            <input required id='passive' type="checkbox" name="declension" onClick={handlePassive} />
+            <label for='passive'>Passive</label>
+          </div>
+          <div>
+            <input required id='indicative' type="checkbox" name="declension" onClick={handleIndicative} />
+            <label for='indicative'>Indicative</label>
+          </div>
+        </fieldset>
         <button for="verb" onClick={() => setPresentDeclension(presentDeclension(verb, active, passive, indicative))}>Submit</button>
         <div>{present}</div>
       </main>
