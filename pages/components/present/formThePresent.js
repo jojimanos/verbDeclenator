@@ -2,7 +2,6 @@ import errorMessage from "./errorMessage";
 
 function formThePresent(verb) {
 
-    let error = "Not a verb"
     let declension = ""
     verb.match(/.ω$/) ? declension = "thematic" : declension = "athematic";
     verb.match(/.μι$/) ? declension = "athematic" : declension = null
@@ -18,7 +17,7 @@ function formThePresent(verb) {
     else if (declension == "athematic") {
         let stem = verb.slice(0, -2)
         let presentActive = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} 
-      ${stem + "ομεν"} ${stem + "ετε"} ${stem + "ουσιν"}`
+      ${stem + "μεν"} ${stem + "τε"} ${stem + "σιν"}`
         let presentPassive = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} 
       ${stem + "μεθα"} ${stem + "σθε"} ${stem + "νται"}`
         return [presentActive, presentPassive]

@@ -1,38 +1,22 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import styles from '../styles/Home.module.css'
-import presentDeclension from './components/present/indicative'
+import presentDeclension from './components/present/mood'
 
 export default function Home() {
-
-  //const presentDeclension = (verb, active, passive) => {
-  //  let declension = ""
-  //  verb.match(/.ω$/) ? declension = "thematic" : declension = "athematic";
-  //  console.log(declension);
-  //  if (declension = "thematic" && active && passive) {
-  //    let stem = verb.slice(0, -1)
-  //    let presentActive = `${stem + "ω"} ${stem + "εις"} ${stem + "ει"} 
-  //    ${stem + "ομεν"} ${stem + "ετε"} ${stem + "ουσιν"}`
-  //    let presentPassive = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} 
-  //    ${stem + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
-  //    return (<div><p>{presentActive}</p><p>{presentPassive}</p></div>)
-  //  }
-  //  else if (passive) {
-  //    let stem = verb.slice(0, -1)
-  //    let presentPassive = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} 
-  //    ${stem + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
-  //    return (<div><p></p><p>{presentPassive}</p></div>)
-  //  }
-  //}
 
   const [verb, setVerb] = useState("")
   const [present, setPresentDeclension] = useState("")
   const [active, setActive] = useState(false)
   const [passive, setPassive] = useState(false)
   const [indicative, setIndicative] = useState(false)
+  const [subjunctive, setSubjunctive] = useState(false)
+  const [optative, setOptative] = useState(false)
   const handleActive = () => { setActive(!active), console.log(active) }
   const handlePassive = () => { setPassive(!passive), console.log(passive) }
   const handleIndicative = () => { setIndicative(!indicative), console.log(indicative) }
+  const handleSubjunctive = () => { setSubjunctive(!subjunctive), console.log(subjunctive) }
+  const handleOptative = () => { setOptative(!optative), console.log(optative) }
 
   return (
     <div className={styles.container}>
@@ -59,8 +43,16 @@ export default function Home() {
             <input required id='indicative' type="checkbox" name="declension" onClick={handleIndicative} />
             <label for='indicative'>Indicative</label>
           </div>
+          <div>
+            <input required id='subjunctive' type="checkbox" name="declension" onClick={handleSubjunctive} />
+            <label for='subjunctive'>Subjunctive</label>
+          </div>
+          <div>
+            <input required id='optative' type="checkbox" name="declension" onClick={handleOptative} />
+            <label for='optative'>Optative</label>
+          </div>
         </fieldset>
-        <button for="verb" onClick={() => setPresentDeclension(presentDeclension(verb, active, passive, indicative))}>Submit</button>
+        <button for="verb" onClick={() => setPresentDeclension(presentDeclension(verb, active, passive, indicative, subjunctive, optative))}>Submit</button>
         <div>{present}</div>
       </main>
     </div>
