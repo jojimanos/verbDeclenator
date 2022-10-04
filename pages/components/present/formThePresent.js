@@ -1,10 +1,8 @@
-import errorMessage from "./errorMessage";
-
 function formThePresent(verb) {
 
-    let declension = ""
-    verb.match(/.ω$/) ? declension = "thematic" : declension = "athematic";
-    verb.match(/.μι$/) ? declension = "athematic" : declension = null
+    let declension = null
+    verb.match(/.ω$/) ? declension = "thematic" : declension;
+    verb.match(/.μι$/) ? declension = "athematic": declension;
     console.log(declension);
     if (declension == "thematic") {
         let stem = verb.slice(0, -1)
