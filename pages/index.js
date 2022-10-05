@@ -12,11 +12,13 @@ export default function Home() {
   const [indicative, setIndicative] = useState(false)
   const [subjunctive, setSubjunctive] = useState(false)
   const [optative, setOptative] = useState(false)
+  const [imperative, setImperative] = useState(false)
   const handleActive = () => { setActive(!active), console.log(active) }
   const handlePassive = () => { setPassive(!passive), console.log(passive) }
   const handleIndicative = () => { setIndicative(!indicative), console.log(indicative) }
   const handleSubjunctive = () => { setSubjunctive(!subjunctive), console.log(subjunctive) }
   const handleOptative = () => { setOptative(!optative), console.log(optative) }
+  const handleImperative = () => { setImperative(!imperative), console.log(imperative) }
 
   return (
     <div className={styles.container}>
@@ -51,8 +53,12 @@ export default function Home() {
             <input required id='optative' type="checkbox" name="declension" onClick={handleOptative} />
             <label for='optative'>Optative</label>
           </div>
+          <div>
+            <input required id='imperative' type="checkbox" name="declension" onClick={handleImperative} />
+            <label for='optative'>Imperative</label>
+          </div>
         </fieldset>
-        <button for="verb" onClick={() => setPresentDeclension(presentDeclension(verb, active, passive, indicative, subjunctive, optative))}>Submit</button>
+        <button for="verb" onClick={() => setPresentDeclension(presentDeclension(verb, active, passive, indicative, subjunctive, optative, imperative))}>Submit</button>
         <div>{present}</div>
       </main>
     </div>

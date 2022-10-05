@@ -4,8 +4,9 @@ import formThePresent from "./formThePresent"
 import errorMessage from "./errorMessage"
 import formThePresentSubjunctive from "./formThePresentSubjunctive"
 import formThePresentOptative from "./formThePresentOptative"
+import formThePresentImperative from "./formThePresentImperative"
 
-const presentDeclension = (verb, active, passive, indicative, subjunctive, optative) => {
+const presentDeclension = (verb, active, passive, indicative, subjunctive, optative, imperative) => {
 
     let error = "No mood checked"
 
@@ -31,6 +32,15 @@ const presentDeclension = (verb, active, passive, indicative, subjunctive, optat
         let voice = determineVoice(active, passive)
 
         let form = formThePresentOptative(verb, optative)
+
+        return (output(voice, form))
+
+    }
+    else if (imperative) {
+
+        let voice = determineVoice(active, passive)
+
+        let form = formThePresentImperative(verb, imperative)
 
         return (output(voice, form))
 
