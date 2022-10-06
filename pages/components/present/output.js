@@ -5,10 +5,10 @@ function output(voice, [presentActive, presentPassive]) {
                     return (<div className={styles.index}><p className={styles.index_item}>{[presentActive]}</p><p className={styles.index_item}>{[presentPassive]}</p></div>)
                 }
                 else if (voice == "active") {
-                    return (<div><p>{[presentActive]}</p></div>)
+                    return (<div className={styles.index}><p className={styles.index_item}>{[presentActive]}</p></div>)
                 }
                 else {
-                    return (<div><p>{[presentPassive]}</p></div>)
+                    return (<div className={styles.index}><p className={styles.index_item}>{[presentPassive]}</p></div>)
                 }
             }
             export default output
