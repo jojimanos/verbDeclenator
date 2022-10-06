@@ -108,6 +108,19 @@
   margin-left: 0.5rem;
 }
 
+.index {
+  display: inline-grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  background-color: rgba(100, 100, 100, 0.8);
+  padding: 10px;
+}
+
+.index_item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
