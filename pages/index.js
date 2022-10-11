@@ -6,7 +6,9 @@ import presentDeclension from './components/present/mood'
 export default function Home() {
 
   const [verb, setVerb] = useState("")
-  const [present, setPresentDeclension] = useState("")
+  const [presentIndex, setPresentDeclension] = useState("")
+  const [present, setPresent] = useState(false)
+  const [imperfect, setImperfect] = useState(false)
   const [active, setActive] = useState(false)
   const [passive, setPassive] = useState(false)
   const [indicative, setIndicative] = useState(false)
@@ -15,6 +17,8 @@ export default function Home() {
   const [imperative, setImperative] = useState(false)
   const handleActive = () => { setActive(!active), console.log(active) }
   const handlePassive = () => { setPassive(!passive), console.log(passive) }
+  const handlePresent = () => {setPresent(!present), console.log(present)}
+  const handleImperfect = () => {setImperfect(!imperfect), console.log(imperfect)}
   const handleIndicative = () => { setIndicative(!indicative), console.log(indicative) }
   const handleSubjunctive = () => { setSubjunctive(!subjunctive), console.log(subjunctive) }
   const handleOptative = () => { setOptative(!optative), console.log(optative) }
@@ -33,6 +37,14 @@ export default function Home() {
         </h1>
         <fieldset>
           <input required id='verb' type="text" onChange={(e) => setVerb(e.target.value)} value={verb} />
+          <div>
+            <input required id='present' type="checkbox" name="declension" onClick={handlePresent} />
+            <label for='present'>Present</label>
+          </div>
+          <div>
+            <input required id='imperfect' type="checkbox" name="declension" onClick={handleImperfect} />
+            <label for='imperfect'>Imperfect</label>
+          </div>
           <div>
             <input required id='active' type="checkbox" name="declension" onClick={handleActive} />
             <label for='active'>Active</label>
@@ -59,7 +71,7 @@ export default function Home() {
           </div>
         </fieldset>
         <button for="verb" onClick={() => setPresentDeclension(presentDeclension(verb, active, passive, indicative, subjunctive, optative, imperative))}>Submit</button>
-        <div>{present}</div>
+        <div>{presentIndex}</div>
       </main>
     </div>
   )
