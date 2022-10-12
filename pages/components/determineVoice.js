@@ -1,8 +1,4 @@
-import errorMessage from "./present/errorMessage"
-
 function determineVoice(active, passive) {
-
-    let error = "No voice checked"
     let voice = ""
     if (active && passive) {
         voice = "both"
@@ -12,12 +8,7 @@ function determineVoice(active, passive) {
         voice = "passive"
     }
     console.log(voice)
-    if (voice='') {
-        return errorMessage(error)
-    }
-    else {
-        return voice
-    }
+    return voice
 }
 
 export default determineVoice

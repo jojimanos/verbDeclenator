@@ -8,45 +8,19 @@ import formThePresentImperative from "./formThePresentImperative"
 
 const presentDeclension = (verb, active, passive, indicative, subjunctive, optative, imperative) => {
 
-    let error = "No mood checked"
+    let voice = determineVoice(active, passive)
 
-    if (indicative) {
+    console.log(voice)
 
-        let voice = determineVoice(active, passive)
+    let indicativeForm = formThePresent(verb)
 
-        let form = formThePresent(verb)
+    let subjunctiveForm = formThePresentSubjunctive(verb)
 
-        return (presentOutput(voice, form))
-    } 
-    else if (subjunctive) {
+    let optativeForm = formThePresentOptative(verb)
 
-        let voice = determineVoice(active, passive)
+    let imperativeForm = formThePresentImperative(verb)
 
-        let form = formThePresentSubjunctive(verb)
+    return (<div>{indicative && (<p>{presentOutput(voice, indicativeForm)}</p>)}{subjunctive && (<p>{presentOutput(voice, subjunctiveForm)}</p>)}{optative && (<p>{presentOutput(voice, optativeForm)}</p>)}{imperative && (<p>{presentOutput(voice, imperativeForm)}</p>)}</div>)
 
-        return (presentOutput(voice, form))
-
-    }
-    else if (optative) {
-
-        let voice = determineVoice(active, passive)
-
-        let form = formThePresentOptative(verb)
-
-        return (presentOutput(voice, form))
-
-    }
-    else if (imperative) {
-
-        let voice = determineVoice(active, passive)
-
-        let form = formThePresentImperative(verb)
-
-        return (presentOutput(voice, form))
-
-    }
-    else {
-        return errorMessage(error)
-    }
 }
 export default presentDeclension
