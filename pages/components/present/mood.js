@@ -1,5 +1,5 @@
 import determineVoice from "../determineVoice"
-import output from "./output"
+import presentOutput from "./output"
 import formThePresent from "./formThePresent"
 import errorMessage from "./errorMessage"
 import formThePresentSubjunctive from "./formThePresentSubjunctive"
@@ -14,35 +14,35 @@ const presentDeclension = (verb, active, passive, indicative, subjunctive, optat
 
         let voice = determineVoice(active, passive)
 
-        let form = formThePresent(verb, indicative)
+        let form = formThePresent(verb)
 
-        return (output(voice, form))
+        return (presentOutput(voice, form))
     } 
     else if (subjunctive) {
 
         let voice = determineVoice(active, passive)
 
-        let form = formThePresentSubjunctive(verb, subjunctive)
+        let form = formThePresentSubjunctive(verb)
 
-        return (output(voice, form))
+        return (presentOutput(voice, form))
 
     }
     else if (optative) {
 
         let voice = determineVoice(active, passive)
 
-        let form = formThePresentOptative(verb, optative)
+        let form = formThePresentOptative(verb)
 
-        return (output(voice, form))
+        return (presentOutput(voice, form))
 
     }
     else if (imperative) {
 
         let voice = determineVoice(active, passive)
 
-        let form = formThePresentImperative(verb, imperative)
+        let form = formThePresentImperative(verb)
 
-        return (output(voice, form))
+        return (presentOutput(voice, form))
 
     }
     else {

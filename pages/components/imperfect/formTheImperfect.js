@@ -1,6 +1,6 @@
 import Stem_mod from '../stem_mod'
 
-function formThePresent(verb) {
+function formTheImperfect(verb) {
 
     let no_accent = Stem_mod(verb)
     let declension = null
@@ -9,30 +9,30 @@ function formThePresent(verb) {
     console.log(declension);
     if (declension == "thematic") {
       let stem = verb.slice(0, -1)
-      let presentAct = `${"ἔ" + no_accent + "ον"} ${"ἔ" + no_accent + "ες"} ${"ἔ" + no_accent + "ε"} ${"ἐ" + stem + "ομεν"} ${"ἐ" + stem + "ετε"} ${"ἔ" + no_accent + "ον"}`
-      let presentPass = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} ${no_accent + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
-      let presentActiveArray = presentAct.split(" ")
-      let presentPassiveArray = presentPass.split(" ")
-      console.log(presentActiveArray)
-      let presentActive = <div>{presentActiveArray.map((present) => <p>{present}</p>)}</div>
-      let presentPassive = <div>{presentPassiveArray.map((present) => <p>{present}</p>)}</div>
-        return ([presentActive, presentPassive])
+      let imperfectAct = `${"ἔ" + no_accent + "ον"} ${"ἔ" + no_accent + "ες"} ${"ἔ" + no_accent + "ε"} ${"ἐ" + stem + "ομεν"} ${"ἐ" + stem + "ετε"} ${"ἔ" + no_accent + "ον"}`
+      let imperfectPass = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} ${no_accent + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
+      let imperfectActiveArray = imperfectAct.split(" ")
+      let imperfectPassiveArray = imperfectPass.split(" ")
+      console.log(imperfectActiveArray)
+      let imperfectActive = <div>{imperfectActiveArray.map((imperfect) => <p>{imperfect}</p>)}</div>
+      let imperfectPassive = <div>{imperfectPassiveArray.map((imperfect) => <p>{imperfect}</p>)}</div>
+        return ([imperfectActive, imperfectPassive])
     }
     else if (declension == "athematic") {
         let stem = verb.slice(0, -2)
-        let presentAct = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} ${stem + "μεν"} ${stem + "τε"} ${stem + "σιν"}`
-        let presentPass = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} ${stem + "μεθα"} ${stem + "σθε"} ${stem + "νται"}`
-        let presentActiveArray = presentAct.split(" ")
-        let presentPassiveArray = presentPass.split(" ")
-        let presentActive = <div>{presentActiveArray.map((present) => <p>{present}</p>)}</div>
-      let presentPassive = <div>{presentPassiveArray.map((present) => <p>{present}</p>)}</div>
-        return [presentActive, presentPassive]
+        let imperfectAct = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} ${stem + "μεν"} ${stem + "τε"} ${stem + "σιν"}`
+        let imperfectPass = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} ${stem + "μεθα"} ${stem + "σθε"} ${stem + "νται"}`
+        let imperfectActiveArray = imperfectAct.split(" ")
+        let imperfectPassiveArray = imperfectPass.split(" ")
+        let imperfectActive = <div>{imperfectActiveArray.map((imperfect) => <p>{imperfect}</p>)}</div>
+      let imperfectPassive = <div>{imperfectPassiveArray.map((imperfect) => <p>{imperfect}</p>)}</div>
+        return ([imperfectActive, imperfectPassive])
     }
     else if (declension == null) {
-        let presentActive = "Not a verb"
-        let presentPassive = ""
-        return [presentActive, presentPassive]
+        let imperfectActive = "Not a verb"
+        let imperfectPassive = ""
+        return ([imperfectActive, imperfectPassive])
     }
 }
 
-export default formThePresent
+export default formTheImperfect
