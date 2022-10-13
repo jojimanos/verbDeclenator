@@ -1,6 +1,6 @@
 import Stem_mod from '../stem_mod'
 
-function formTheFuture(verb) {
+function formTheAoristOptative(verb) {
 
     let no_accent = Stem_mod(verb)
     let declension = null
@@ -9,8 +9,8 @@ function formTheFuture(verb) {
     console.log(declension);
     if (declension == "thematic") {
       let stem = verb.slice(0, -1)
-      let futureAct = `${stem + "σω"} ${stem + "σεις"} ${stem + "σει"} ${stem + "σομεν"} ${stem + "σετε"} ${stem + "σουσιν"}`
-      let futurePass = `${stem + "σομαι"} ${stem + "σει"} ${stem + "σεται"} ${no_accent + "σόμεθα"} ${stem + "σεσθε"} ${stem + "σονται"}`
+      let futureAct = `${stem + "ω"} ${stem + "εις"} ${stem + "ει"} ${stem + "ομεν"} ${stem + "ετε"} ${stem + "ουσιν"}`
+      let futurePass = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} ${no_accent + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
       let futureActiveArray = futureAct.split(" ")
       let futurePassiveArray = futurePass.split(" ")
       console.log(futureActiveArray)
@@ -35,4 +35,4 @@ function formTheFuture(verb) {
     }
 }
 
-export default formTheFuture
+export default formTheAoristOptative
