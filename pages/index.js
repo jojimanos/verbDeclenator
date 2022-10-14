@@ -103,7 +103,7 @@ export default function Home() {
           </div>
           </fieldset>
         </fieldset>
-        <button for="verb" onClick={() => setPresentDeclension(output(verb, active, passive, indicative, subjunctive, optative, imperative, present, imperfect))}>Submit</button>
+        <button for="verb" onClick={() => setPresentDeclension(output(verb, active, passive, indicative, subjunctive, optative, imperative, present, imperfect, aorist))}>Submit</button>
         <div>{presentDeclension}</div>
       </main>
     </div>

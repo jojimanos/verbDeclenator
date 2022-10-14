@@ -6,10 +6,10 @@ export function aoristStemMod(verb) {
     verb.match(/.μι$/) ? declension = "athematic" : declension;
 
     if (declension = "thematic") {
-        stem = stem.slice(0, -1)
+       stem = verb.slice(0, -1)
     }
     else if (declension = "athematic") {
-        stem = stem.slice(0, -4)
+       stem = verb.slice(0, -4)
     }
 
     stem.match(/.κ$/) ? stem.replace("κ", "ξ") : stem
@@ -20,22 +20,11 @@ export function aoristStemMod(verb) {
     stem.match(/.θ$/) ? stem.replace("θ", "σ") : stem
     stem.match(/.π$/) ? stem.replace("π", "ψ") : stem
     stem.match(/.β$/) ? stem.replace("β", "ψ") : stem
-    stem.match(/.φ$/) ? stem.replace("φ", "ψ") : stem
+    stem.match(/.φ$/) ? stem.replace("φ", "ψ") : stem = `${stem + 'σ'}`
 
-    let no_accent = ""
+    let acc_stem = stem
 
-    stem.match(/^ά/) ? no_accent = stem.replace("ά", "α") : no_accent = stem
-    verb.match(/.ά./) ? no_accent = stem.replace("ά", "α") : no_accent
-    verb.match(/^έ/) ? no_accent = stem.replace("έ", "ε") : no_accent
-    verb.match(/.έ./) ? no_accent = verb.replace("έ", "ε") : no_accent
-    verb.match(/^ί/) ? no_accent = verb.replace("ί", "ι") : no_accent
-    verb.match(/.ί./) ? no_accent = verb.replace("ί", "ι") : no_accent
-    verb.match(/^ό/) ? no_accent = verb.replace("ό", "ο") : no_accent
-    verb.match(/.ό./) ? no_accent = verb.replace("ό", "ο") : no_accent
-    verb.match(/^ύ/) ? no_accent = verb.replace("ύ", "υ") : no_accent
-    verb.match(/.ύ./) ? no_accent = verb.replace("ύ", "υ") : no_accent
-
-    return stem
+    return acc_stem
 }
 
 export function aoristStemModNoAccent(verb) {
@@ -46,10 +35,10 @@ export function aoristStemModNoAccent(verb) {
     verb.match(/.μι$/) ? declension = "athematic" : declension;
 
     if (declension = "thematic") {
-        stem = stem.slice(0, -1)
+        stem = verb.slice(0, -1)
     }
     else if (declension = "athematic") {
-        stem = stem.slice(0, -4)
+        stem = verb.slice(0, -4)
     }
 
     stem.match(/.κ$/) ? stem.replace("κ", "ξ") : stem
@@ -60,20 +49,20 @@ export function aoristStemModNoAccent(verb) {
     stem.match(/.θ$/) ? stem.replace("θ", "σ") : stem
     stem.match(/.π$/) ? stem.replace("π", "ψ") : stem
     stem.match(/.β$/) ? stem.replace("β", "ψ") : stem
-    stem.match(/.φ$/) ? stem.replace("φ", "ψ") : stem
+    stem.match(/.φ$/) ? stem.replace("φ", "ψ") : stem = `${stem + 'σ'}`
 
     let no_accent = ""
 
     stem.match(/^ά/) ? no_accent = stem.replace("ά", "α") : no_accent = stem
-    verb.match(/.ά./) ? no_accent = stem.replace("ά", "α") : no_accent
-    verb.match(/^έ/) ? no_accent = stem.replace("έ", "ε") : no_accent
-    verb.match(/.έ./) ? no_accent = verb.replace("έ", "ε") : no_accent
-    verb.match(/^ί/) ? no_accent = verb.replace("ί", "ι") : no_accent
-    verb.match(/.ί./) ? no_accent = verb.replace("ί", "ι") : no_accent
-    verb.match(/^ό/) ? no_accent = verb.replace("ό", "ο") : no_accent
-    verb.match(/.ό./) ? no_accent = verb.replace("ό", "ο") : no_accent
-    verb.match(/^ύ/) ? no_accent = verb.replace("ύ", "υ") : no_accent
-    verb.match(/.ύ./) ? no_accent = verb.replace("ύ", "υ") : no_accent
+    stem.match(/.ά./) ? no_accent = stem.replace("ά", "α") : no_accent
+    stem.match(/^έ/) ? no_accent = stem.replace("έ", "ε") : no_accent
+    stem.match(/.έ./) ? no_accent = stem.replace("έ", "ε") : no_accent
+    stem.match(/^ί/) ? no_accent = stem.replace("ί", "ι") : no_accent
+    stem.match(/.ί./) ? no_accent = stem.replace("ί", "ι") : no_accent
+    stem.match(/^ό/) ? no_accent = stem.replace("ό", "ο") : no_accent
+    stem.match(/.ό./) ? no_accent = stem.replace("ό", "ο") : no_accent
+    stem.match(/^ύ/) ? no_accent = stem.replace("ύ", "υ") : no_accent
+    stem.match(/.ύ./) ? no_accent = stem.replace("ύ", "υ") : no_accent
 
     return no_accent
 }

@@ -1,12 +1,11 @@
 import determineVoice from "../determineVoice"
 import aoristOutput from "./output"
-import formTheAorist from "./formTheFuture"
-import errorMessage from "./errorMessage"
+import formTheAorist from "./formTheAorist"
 import formTheAoristSubjunctive from "./formTheAoristSubjunctive"
-import formTheAoristOptative from "./formThePresentOptative"
-import formTheAoristImperative from "./formThePresentImperative"
+import formTheAoristOptative from "./formTheAoristOptative"
+import formTheAoristImperative from "./formTheAoristImperative"
 
-const futureDeclension = (verb, active, passive, indicative, subjunctive, optative, imperative) => {
+const aoristDeclension = (verb, active, passive, indicative, subjunctive, optative, imperative) => {
 
     let voice = determineVoice(active, passive)
 
@@ -23,4 +22,4 @@ const futureDeclension = (verb, active, passive, indicative, subjunctive, optati
     return (<div>{indicative && (<p>{aoristOutput(voice, indicativeForm)}</p>)}{subjunctive && (<p>{aoristOutput(voice, subjunctiveForm)}</p>)}{optative && (<p>{aoristOutput(voice, optativeForm)}</p>)}{imperative && (<p>{aoristOutput(voice, imperativeForm)}</p>)}</div>)
 
 }
-export default futureDeclension
+export default aoristDeclension
