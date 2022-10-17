@@ -1,33 +1,19 @@
 import determineVoice from "../determineVoice"
 import futureOutput from "./output"
 import formTheFuture from "./formTheFuture"
-import errorMessage from "./errorMessage"
-import formTheFutureOptative from "./formThePresentOptative"
-import formThePresentImperative from "./formThePresentImperative"
+import formTheFutureOptative from "./formTheFutureOptative"
 
-const futureDeclension = (verb, active, passive, indicative, subjunctive, optative, imperative) => {
+const futureDeclension = (verb, active, passive, indicative, optative) => {
 
-    let error = "No mood checked"
+    let voice = determineVoice(active, passive)
 
-    if (indicative) {
+    console.log(voice)
 
-        let voice = determineVoice(active, passive)
+    let indicativeForm = formTheFuture(verb)
 
-        let form = formTheFuture(verb)
+    let optativeForm = formTheFutureOptative(verb)
 
-        return (futureOutput(voice, form))
-    } 
-    else if (optative) {
+    return (<div>{indicative && (<p>{futureOutput(voice, indicativeForm)}</p>)}{optative && (<p>{futureOutput(voice, optativeForm)}</p>)}</div>)
 
-        let voice = determineVoice(active, passive)
-
-        let form = formTheFutureOptative(verb)
-
-        return (futureOutput(voice, form))
-
-    }
-    else {
-        return errorMessage(error)
-    }
 }
 export default futureDeclension

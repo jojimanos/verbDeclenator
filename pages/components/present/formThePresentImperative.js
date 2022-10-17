@@ -6,18 +6,24 @@ function formThePresent(verb) {
     console.log(declension);
     if (declension == "thematic") {
         let stem = verb.slice(0, -1)
-        let presentActive = `${stem + "ε"} ${stem + "έτω"} 
-      ${stem + "ετε"} ${stem + "έτωσαν"}`
-        let presentPassive = `${stem + "ου"} ${stem + "έσθω"} 
-      ${stem + "εσθε"} ${stem + "έσθωσαν"}`
+        let presentAct = `${stem + "ε"} ${stem + "έτω"} ${stem + "ετε"} ${stem + "έτωσαν"}`
+        let presentPass = `${stem + "ου"} ${stem + "έσθω"} ${stem + "εσθε"} ${stem + "έσθωσαν"}`
+      let presentActiveArray = presentAct.split(" ")
+      let presentPassiveArray = presentPass.split(" ")
+      console.log(presentActiveArray)
+      let presentActive = <div>{presentActiveArray.map((present) => <p>{present}</p>)}</div>
+      let presentPassive = <div>{presentPassiveArray.map((present) => <p>{present}</p>)}</div>
         return [presentActive, presentPassive]
     }
     else if (declension == "athematic") {
         let stem = verb.slice(0, -2)
-        let presentActive = `${stem + ""} ${stem + "τω"} 
-      ${stem + "τε"} ${stem + "ντων"}`
-        let presentPassive = `${stem + "σο"} ${stem + "σθω"} 
-      ${stem + "σθε"} ${stem + "σθων"}`
+        let presentAct = `${stem + ""} ${stem + "τω"} ${stem + "τε"} ${stem + "ντων"}`
+        let presentPass = `${stem + "σο"} ${stem + "σθω"} ${stem + "σθε"} ${stem + "σθων"}`
+        let presentActiveArray = presentAct.split(" ")
+      let presentPassiveArray = presentPass.split(" ")
+      console.log(presentActiveArray)
+      let presentActive = <div>{presentActiveArray.map((present) => <p>{present}</p>)}</div>
+      let presentPassive = <div>{presentPassiveArray.map((present) => <p>{present}</p>)}</div>
         return [presentActive, presentPassive]
     }
     else if (declension == null) {

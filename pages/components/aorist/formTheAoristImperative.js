@@ -1,7 +1,7 @@
 import {aoristStemMod, aoristStemModNoAccent} from '../aoristStemMod'
 import CircumflexStemMod from '../circumflexStemMod'
 
-function formThePresent(verb) {
+function formTheAoristImperative(verb) {
 
   let accent = aoristStemMod(verb)
   let no_accent = aoristStemModNoAccent(verb)
@@ -12,25 +12,31 @@ function formThePresent(verb) {
   console.log(declension);
   if (declension == "thematic") {
     let stem = verb.slice(0, -1)
-    let presentActive = `${circumflex + "ον"} ${no_accent + "άτω"} 
-      ${accent + "ατε"} ${no_accent + "άντων / -άτωσαν"}`
-    let presentPassive = `${accent + "αι"} ${no_accent + "άσθω"} 
-      ${accent + "ασθε"} ${no_accent + "άσθων / -άσθωσαν"}`
-    return [presentActive, presentPassive]
+    let aoristAct = `${circumflex + "ον"} ${no_accent + "άτω"} ${accent + "ατε"} ${no_accent + "άντων / -άτωσαν"}`
+    let aoristPass = `${accent + "αι"} ${no_accent + "άσθω"} ${accent + "ασθε"} ${no_accent + "άσθων / -άσθωσαν"}`
+      let aoristActiveArray = aoristAct.split(" ")
+      let aoristPassiveArray = aoristPass.split(" ")
+      console.log(aoristActiveArray)
+      let aoristActive = <div>{aoristActiveArray.map((aorist) => <p>{aorist}</p>)}</div>
+      let aoristPassive = <div>{aoristPassiveArray.map((aorist) => <p>{aorist}</p>)}</div>
+    return [aoristActive, aoristPassive]
   }
   else if (declension == "athematic") {
     let stem = verb.slice(0, -2)
-    let presentActive = `${stem + ""} ${stem + "τω"} 
-      ${stem + "τε"} ${stem + "ντων"}`
-    let presentPassive = `${stem + "σο"} ${stem + "σθω"} 
-      ${stem + "σθε"} ${stem + "σθων"}`
-    return [presentActive, presentPassive]
+    let aoristAct = `${stem + ""} ${stem + "τω"} ${stem + "τε"} ${stem + "ντων"}`
+    let aoristPass = `${stem + "σο"} ${stem + "σθω"} ${stem + "σθε"} ${stem + "σθων"}`
+    let aoristActiveArray = aoristAct.split(" ")
+      let aoristPassiveArray = aoristPass.split(" ")
+      console.log(aoristActiveArray)
+      let aoristActive = <div>{aoristActiveArray.map((aorist) => <p>{aorist}</p>)}</div>
+      let aoristPassive = <div>{aoristPassiveArray.map((aorist) => <p>{aorist}</p>)}</div>
+    return [aoristActive, aoristPassive]
   }
   else if (declension == null) {
-    let presentActive = "Not a verb"
-    let presentPassive = ""
-    return [presentActive, presentPassive]
+    let aoristActive = "Not a verb"
+    let aoristPassive = ""
+    return [aoristActive, aoristPassive]
   }
 }
 
-export default formThePresent
+export default formTheAoristImperative

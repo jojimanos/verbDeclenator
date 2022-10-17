@@ -6,18 +6,24 @@ function formThePresentOptative(verb) {
     console.log(declension);
     if (declension == "thematic") {
         let stem = verb.slice(0, -1)
-        let presentActive = `${stem + "οιμι"} ${stem + "οις"} ${stem + "οι"} 
-      ${stem + "οιμεν"} ${stem + "οιτε"} ${stem + "οιεν"}`
-        let presentPassive = `${stem + "οιμην"} ${stem + "οιο"} ${stem + "οιτο"} 
-      ${stem + "οίμεθα"} ${stem + "οισθε"} ${stem + "οιντο"}`
+        let presentAct = `${stem + "οιμι"} ${stem + "οις"} ${stem + "οι"} ${stem + "οιμεν"} ${stem + "οιτε"} ${stem + "οιεν"}`
+        let presentPass = `${stem + "οιμην"} ${stem + "οιο"} ${stem + "οιτο"} ${stem + "οίμεθα"} ${stem + "οισθε"} ${stem + "οιντο"}`
+      let presentActiveArray = presentAct.split(" ")
+      let presentPassiveArray = presentPass.split(" ")
+      console.log(presentActiveArray)
+      let presentActive = <div>{presentActiveArray.map((present) => <p>{present}</p>)}</div>
+      let presentPassive = <div>{presentPassiveArray.map((present) => <p>{present}</p>)}</div>
         return [presentActive, presentPassive]
     }
     else if (declension == "athematic") {
         let stem = verb.slice(0, -2)
-        let presentActive = `${stem + "οιμι"} ${stem + "οις"} ${stem + "οι"} 
-      ${stem + "οιμεν"} ${stem + "οιτε"} ${stem + "οιεν"}`
-        let presentPassive = `${stem + "οιμην"} ${stem + "οιο"} ${stem + "οιτο"} 
-      ${stem + "οίμεθα"} ${stem + "οισθε"} ${stem + "οιντο"}`
+        let presentAct = `${stem + "οιμι"} ${stem + "οις"} ${stem + "οι"} ${stem + "οιμεν"} ${stem + "οιτε"} ${stem + "οιεν"}`
+        let presentPass = `${stem + "οιμην"} ${stem + "οιο"} ${stem + "οιτο"} ${stem + "οίμεθα"} ${stem + "οισθε"} ${stem + "οιντο"}`
+      let presentActiveArray = presentAct.split(" ")
+      let presentPassiveArray = presentPass.split(" ")
+      console.log(presentActiveArray)
+      let presentActive = <div>{presentActiveArray.map((present) => <p>{present}</p>)}</div>
+      let presentPassive = <div>{presentPassiveArray.map((present) => <p>{present}</p>)}</div>
         return [presentActive, presentPassive]
     }
     else if (declension == null) {
