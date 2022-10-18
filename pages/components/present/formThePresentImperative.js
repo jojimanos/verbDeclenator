@@ -1,13 +1,16 @@
+import Stem_mod from "../stem_mod";
+
 function formThePresent(verb) {
 
-    let declension = null
+  let no_accent = Stem_mod(verb)  
+  let declension = null
     verb.match(/.ω$/) ? declension = "thematic" : declension;
     verb.match(/.μι$/) ? declension = "athematic" : declension;
     console.log(declension);
     if (declension == "thematic") {
         let stem = verb.slice(0, -1)
-        let presentAct = `${stem + "ε"} ${stem + "έτω"} ${stem + "ετε"} ${stem + "έτωσαν"}`
-        let presentPass = `${stem + "ου"} ${stem + "έσθω"} ${stem + "εσθε"} ${stem + "έσθωσαν"}`
+        let presentAct = `${stem + "ε"} ${no_accent + "έτω"} ${stem + "ετε"} ${no_accent = Stem_mod(verb) + "όντων, -έτωσαν"}`
+        let presentPass = `${stem + "ου"} ${no_accent + "έσθω"} ${stem + "εσθε"} ${no_accent + "έσθων, -έσθωσαν"}`
       let presentActiveArray = presentAct.split(" ")
       let presentPassiveArray = presentPass.split(" ")
       console.log(presentActiveArray)
