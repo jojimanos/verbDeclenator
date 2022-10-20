@@ -7,9 +7,9 @@ import formThePresentOptative from "./formThePresentOptative"
 import formThePresentImperative from "./formThePresentImperative"
 import styles from "../../../styles/Home.module.css"
 
-const presentDeclension = (verb, active, passive, indicative, subjunctive, optative, imperative) => {
+const presentDeclension = (verb, active, middle, passive, indicative, subjunctive, optative, imperative) => {
 
-    let voice = determineVoice(active, passive)
+    let voice = determineVoice(active, middle, passive)
 
     console.log(voice)
 

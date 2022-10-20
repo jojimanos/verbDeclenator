@@ -20,8 +20,8 @@ function formTheFuture(verb) {
     }
     else if (declension == "athematic") {
         let stem = verb.slice(0, -2)
-        let futureAct = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} ${stem + "μεν"} ${stem + "τε"} ${stem + "σιν"}`
-        let futurePass = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} ${stem + "μεθα"} ${stem + "σθε"} ${stem + "νται"}`
+        let futureAct = `${stem + "ω"} ${stem + "εις"} ${stem + "ει"} ${stem + "ομεν"} ${stem + "ετε"} ${stem + "ουσιν"}`
+        let futurePass = `${stem + "ομαι"} ${stem + "εσαι"} ${stem + "εται"} ${stem + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
         let futureActiveArray = futureAct.split(" ")
         let futurePassiveArray = futurePass.split(" ")
         let futureActive = <div>{futureActiveArray.map((future) => <p>{future}</p>)}</div>

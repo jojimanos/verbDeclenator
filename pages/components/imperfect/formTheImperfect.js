@@ -10,7 +10,7 @@ function formTheImperfect(verb) {
     if (declension == "thematic") {
       let stem = verb.slice(0, -1)
       let imperfectAct = `${"ἔ" + no_accent + "ον"} ${"ἔ" + no_accent + "ες"} ${"ἔ" + no_accent + "ε"} ${"ἐ" + stem + "ομεν"} ${"ἐ" + stem + "ετε"} ${"ἔ" + no_accent + "ον"}`
-      let imperfectPass = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} ${no_accent + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
+      let imperfectPass = `${"ἐ" + stem + "ομην"} ${"ἐ" + stem + "ου"} ${"ἐ" + stem + "ετο"} ${"ἐ" + no_accent + "όμεθα"} ${"ἐ" + stem + "εσθε"} ${"ἐ" + stem + "οντο"}`
       let imperfectActiveArray = imperfectAct.split(" ")
       let imperfectPassiveArray = imperfectPass.split(" ")
       console.log(imperfectActiveArray)
@@ -20,8 +20,8 @@ function formTheImperfect(verb) {
     }
     else if (declension == "athematic") {
         let stem = verb.slice(0, -2)
-        let imperfectAct = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} ${stem + "μεν"} ${stem + "τε"} ${stem + "σιν"}`
-        let imperfectPass = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} ${stem + "μεθα"} ${stem + "σθε"} ${stem + "νται"}`
+        let imperfectAct = `${"ἐ" + stem + "ν"} ${"ἐ" + stem + "ς"} ${"ἐ" + stem + ""} ${"ἐ" + stem + "μεν"} ${"ἐ" + stem + "τε"} ${"ἐ" + stem + "ν"}`
+        let imperfectPass = `${stem + "μην"} ${stem + "σο"} ${stem + "το"} ${stem + "μεθα"} ${stem + "σθε"} ${stem + "ντο"}`
         let imperfectActiveArray = imperfectAct.split(" ")
         let imperfectPassiveArray = imperfectPass.split(" ")
         let imperfectActive = <div>{imperfectActiveArray.map((imperfect) => <p>{imperfect}</p>)}</div>

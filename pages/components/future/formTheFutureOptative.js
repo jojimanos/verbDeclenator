@@ -9,8 +9,8 @@ function formTheFutureOptative(verb) {
     console.log(declension);
     if (declension == "thematic") {
       let stem = verb.slice(0, -1)
-      let futureAct = `${stem + "ω"} ${stem + "εις"} ${stem + "ει"} ${stem + "ομεν"} ${stem + "ετε"} ${stem + "ουσιν"}`
-      let futurePass = `${stem + "ομαι"} ${stem + "ει"} ${stem + "εται"} ${no_accent + "όμεθα"} ${stem + "εσθε"} ${stem + "ονται"}`
+      let futureAct = `${stem + "οιμι"} ${stem + "οις"} ${stem + "οι"} ${stem + "οιμεν"} ${stem + "οιτε"} ${stem + "οιεν"}`
+      let futurePass = `${stem + "οίμην"} ${stem + "οιο"} ${stem + "οιτο"} ${no_accent + "οίμεθα"} ${stem + "οισθε"} ${stem + "οιντο"}`
       let futureActiveArray = futureAct.split(" ")
       let futurePassiveArray = futurePass.split(" ")
       console.log(futureActiveArray)
@@ -20,8 +20,8 @@ function formTheFutureOptative(verb) {
     }
     else if (declension == "athematic") {
         let stem = verb.slice(0, -2)
-        let futureAct = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} ${stem + "μεν"} ${stem + "τε"} ${stem + "σιν"}`
-        let futurePass = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} ${stem + "μεθα"} ${stem + "σθε"} ${stem + "νται"}`
+        let futureAct = `${stem + "οιμι"} ${stem + "οις"} ${stem + "οι"} ${stem + "οιμεν"} ${stem + "οιτε"} ${stem + "οιεν"}`
+        let futurePass = `${stem + "οίμην"} ${stem + "οιο"} ${stem + "οιτο"} ${stem + "οίμεθα"} ${stem + "οισθε"} ${stem + "οιντο"}`
         let futureActiveArray = futureAct.split(" ")
         let futurePassiveArray = futurePass.split(" ")
         let futureActive = <div>{futureActiveArray.map((future) => <p>{future}</p>)}</div>

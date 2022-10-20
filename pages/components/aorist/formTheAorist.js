@@ -10,7 +10,7 @@ function formTheAorist(verb) {
   console.log(declension);
   if (declension == "thematic") {
     let aoristAct = `${"ἔ" + no_accent + "α"} ${"ἔ" + no_accent + "ας"} ${"ἔ" + no_accent + "ε"} ${"ἐ" + accent + "αμεν"} ${"ἐ" + accent + "ατε"} ${"ἔ" + no_accent + "αν"}`
-    let aoristPass = `${no_accent + "ομαι"} ${accent + "ει"} ${accent + "εται"} ${no_accent + "όμεθα"} ${accent + "εσθε"} ${accent + "ονται"}`
+    let aoristPass = `${"ἔ" + no_accent + "άμην"} ${"ἔ" + accent + "ω"} ${"ἔ" + accent + "ατο"} ${"ἔ" + no_accent + "άμεθα"} ${"ἔ" + accent + "ασθε"} ${"ἔ" + accent + "αντο"}`
     let aoristActiveArray = aoristAct.split(" ")
     let aoristPassiveArray = aoristPass.split(" ")
     console.log(aoristActiveArray)
@@ -20,8 +20,8 @@ function formTheAorist(verb) {
   }
   else if (declension == "athematic") {
     let stem = verb.slice(0, -2)
-    let aoristAct = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} ${stem + "μεν"} ${stem + "τε"} ${stem + "σιν"}`
-    let aoristPass = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} ${stem + "μεθα"} ${stem + "σθε"} ${stem + "νται"}`
+    let aoristAct = `${"ἔ" + stem + "α"} ${"ἔ" + stem + "ας"} ${"ἔ" + stem + "ε"} ${"ἔ" + stem + "αμεν"} ${"ἔ" + stem + "ατε"} ${"ἔ" + stem + "ασαν"}`
+    let aoristPass = `${"ἔ" + stem + "άμην"} ${"ἔ" + stem + "ω"} ${"ἔ" + stem + "ατο"} ${"ἔ" + stem + "άμεθα"} ${"ἔ" + stem + "ασθε"} ${"ἔ" + stem + "αντο"}`
     let aoristActiveArray = aoristAct.split(" ")
     let aoristPassiveArray = aoristPass.split(" ")
     let aoristActive = <div>{aoristActiveArray.map((aorist) => <p>{aorist}</p>)}</div>

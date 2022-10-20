@@ -15,13 +15,14 @@ export default function Home() {
   const [perfect, setPerfect] = useState(false)
   const [pluperfect, setPluperfect] = useState(false)
   const [active, setActive] = useState(false)
+  const [middle, setMiddle] = useState(false)
   const [passive, setPassive] = useState(false)
   const [indicative, setIndicative] = useState(false)
   const [subjunctive, setSubjunctive] = useState(false)
   const [optative, setOptative] = useState(false)
   const [imperative, setImperative] = useState(false)
   const handleActive = () => { setActive(!active), console.log(active) }
-  const handlePassive = () => { setPassive(!passive), console.log(passive) }
+  const handleMiddle = () => { setMiddle(!middle), console.log(middle) }
   const handlePresent = () => {setPresent(!present), console.log(present)}
   const handleImperfect = () => {setImperfect(!imperfect), console.log(imperfect)}
   const handleFuture = () => {setFuture(!future), console.log(future)}
@@ -81,8 +82,8 @@ export default function Home() {
             <label for='active'>Active</label>
           </div>
           <div>
-            <input required id='passive' type="checkbox" name="declension" onClick={handlePassive} />
-            <label for='passive'>Passive</label>
+            <input required id='middle' type="checkbox" name="declension" onClick={handleMiddle} />
+            <label for='middle'>Middle</label>
           </div>
           </fieldset>
           <fieldset>
@@ -105,7 +106,7 @@ export default function Home() {
           </div>
           </fieldset>
         </fieldset>
-        <button for="verb" onClick={() => setPresentDeclension(output(verb, active, passive, indicative, subjunctive, optative, imperative, present, imperfect, future, aorist))}>Submit</button>
+        <button for="verb" onClick={() => setPresentDeclension(output(verb, active, middle, passive, indicative, subjunctive, optative, imperative, present, imperfect, future, aorist))}>Submit</button>
         <div>{presentDeclension}</div>
       </main>
     </div>

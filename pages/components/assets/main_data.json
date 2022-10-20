@@ -1,0 +1,50 @@
+{
+    "main_data": [
+      {
+        "locale": "English",
+        "main_title": "Smart Verb Declenator",
+        "description": "A site dedicated to the study of Christian scriptures",
+        "Tenses": ["present", "imperfect", "future", "aorist", "perfecct", "pluperfect"],
+        "Mood":["indicative", "subjunctive", "optative", "imperative"],
+        "menu": "Menu",
+        "settings": "Settings",
+        "search": "Search",
+        "languageswitch": "Language",
+        "themeswitch": "Switch Theme"
+      },
+      {
+        "locale": "Espagnol",
+        "main_title": "Welcome to ΑΩ",
+        "description": "",
+        "image": "",
+        "menu": "Menu",
+        "settings": "Ajustes",
+        "search": "Búsqueda",
+        "languageswitch": "Language",
+        "themeswitch": "Switch Theme"
+      },
+      {
+        "locale": "it-IT",
+        "main_title": "Welcome to ΑΩ",
+        "description": "",
+        "image": "",
+        "menu": "Menu",
+        "settings": "Adattamento",
+        "search": "Scrutare",
+        "languageswitch": "Language",
+        "themeswitch": "Switch Theme"
+      },
+      {
+        "locale": "English",
+        "main_title": "Smart Verb Declenator",
+        "description": "A site dedicated to the study of Christian scriptures",
+        "Tenses": ["present", "imperfect", "future", "aorist", "perfecct", "pluperfect"],
+        "Mood":["indicative", "subjunctive", "optative", "imperative"],
+        "menu": "Menu",
+        "settings": "Settings",
+        "search": "Search",
+        "languageswitch": "Language",
+        "themeswitch": "Switch Theme"
+      }
+    ]
+  }

@@ -24,7 +24,7 @@ function formTheAoristImperative(verb) {
   else if (declension == "athematic") {
     let stem = verb.slice(0, -2)
     let aoristAct = `${stem + ""} ${stem + "τω"} ${stem + "τε"} ${stem + "ντων"}`
-    let aoristPass = `${stem + "σο"} ${stem + "σθω"} ${stem + "σθε"} ${stem + "σθων"}`
+    let aoristPass = `${stem + "σο"} ${stem + "σθω"} ${stem + "σθε"} ${stem + "σθων, -σθωσαν"}`
     let aoristActiveArray = aoristAct.split(" ")
       let aoristPassiveArray = aoristPass.split(" ")
       console.log(aoristActiveArray)
