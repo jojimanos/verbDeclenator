@@ -1,4 +1,6 @@
-function determineVoice(active, middle, passive) {
+exports.determineVoice = (req, res) => {
+
+    const { active, middle, passive } = req.body
     let voice = ""
     if (active && middle && passive) {
         voice = "all"
@@ -18,7 +20,9 @@ function determineVoice(active, middle, passive) {
         voice = "no voice checked"
     }
     console.log(voice)
-    return voice
-}
+    
+    return res.json({
+        voice
+    })
 
-export default determineVoice
+}

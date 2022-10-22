@@ -6,7 +6,7 @@ import futureDeclension from "./future/mood";
 
 function output(verb, active, middle, passive, indicative, subjunctive, optative, imperative, present, imperfect, future, aorist) {
     
-    return (<div >{present && (<p>{presentDeclension(verb, active, middle, passive, indicative, subjunctive, optative, imperative)}</p>)}
+    return (<div >{present && (<p>{presentDeclension(verb, active, middle, indicative, subjunctive, optative, imperative)}</p>)}
     {imperfect && (<p>{imperfectExport(verb, active, middle, passive)}</p>)}{future && <p>{futureDeclension(verb, active, middle, passive, indicative, optative)}</p>}{aorist && (<p>{aoristDeclension(verb, active, middle, passive, indicative, subjunctive, optative, imperative)}</p>)}</div>)
 
     //let error = "No tense selected"
