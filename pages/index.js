@@ -80,6 +80,21 @@ export default function Home() {
       .catch(error => {
         console.log(error)
       });
+
+      axios
+      .post(`http://localhost:8000/api/form-the-present-subjunctive`, {
+        verb: verb, 
+        //present: present
+        //, imperfect: imperfect, future: future,
+        //aorist: aorist, perfect: perfect, pluperfect: pluperfect,
+        //active: active, middle: middle, passive: passive,
+        //indicative: indicative, subjunctive: subjunctive, imperative: imperative
+      }).then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      });
   }
 
   return (

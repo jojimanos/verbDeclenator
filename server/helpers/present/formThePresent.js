@@ -2,7 +2,7 @@ exports.formThePresent = (req, res) => {
 
   const { verb } = req.body
 
-  var myModule = require('./stem_mod')
+  var myModule = require('../stem_mod')
   var no_accent = myModule.stem
   let declension = null
   let presentActiveArray
@@ -35,7 +35,7 @@ exports.formThePresent = (req, res) => {
     //let presentMiddle = "" 
   }
   console.log(presentActiveArray, presentMiddleArray, no_accent)
-  
+
   return res.json({
     presentActiveArray
   })

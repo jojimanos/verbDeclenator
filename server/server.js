@@ -22,8 +22,8 @@ app.use('/api', authRoutes);
 //
 const port = process.env.PORT;
 app.listen(port, () => console.log(`API is running on port ${port}`));
-//
-////mongoose
+
+//mongoose
 //mongoose
 //    .connect(process.env.DATABASE, {})
 //    .then(() => console.log("DB connected"))
