@@ -1,5 +1,7 @@
 exports.formThePresentOptative = (req, res) => {
 
+  const { verb } = req.body
+
   let myModule = require('../stem_mod')
   let no_accent = myModule.stem
   let declension = null

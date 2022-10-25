@@ -2,8 +2,10 @@ exports.formThePresent = (req, res) => {
 
   const { verb } = req.body
 
-  var myModule = require('../stem_mod')
-  var no_accent = myModule.stem
+  let temp = require('../imperfect/formTheImperfect')
+  let imperfectActive = temp.imperfectActiveArray
+  let myModule = require('../stem_mod')
+  let no_accent = myModule.stem
   let declension = null
   let presentActiveArray
   let presentMiddleArray
@@ -34,7 +36,7 @@ exports.formThePresent = (req, res) => {
     //let presentActive = "Not a verb"
     //let presentMiddle = "" 
   }
-  console.log(presentActiveArray, presentMiddleArray, no_accent)
+  console.log(presentActiveArray, presentMiddleArray, imperfectActive, no_accent)
 
   return res.json({
     presentActiveArray

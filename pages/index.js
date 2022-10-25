@@ -40,10 +40,35 @@ export default function Home() {
 
     axios
       .post(`http://localhost:8000/api/voice`, {
-        //verb: verb, present: present, imperfect: imperfect, future: future,
-        //aorist: aorist, perfect: perfect, pluperfect: pluperfect,
         active: active, middle: middle, passive: passive,
-        //indicative: indicative, subjunctive: subjunctive, imperative: imperative
+      }).then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      });
+
+    axios.post(`http://localhost:8000/api/stem-mod`,
+      { verb: verb })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      });
+    
+    axios.post(`http://localhost:8000/api/aorist-stem-mod`, {
+      verb: verb
+    }).then(response => {
+      console.log(response)
+    })
+      .catch(error => {
+        console.log(error)
+      });
+
+    axios
+      .post(`http://localhost:8000/api/form-the-present`, {
+        verb: verb
       }).then(response => {
         console.log(response)
       })
@@ -52,49 +77,28 @@ export default function Home() {
       });
 
     axios
-      .post(`http://localhost:8000/api/stem-mod`, {
-        verb: verb, 
-        //present: present
-        //, imperfect: imperfect, future: future,
-        //aorist: aorist, perfect: perfect, pluperfect: pluperfect,
-        //active: active, middle: middle, passive: passive,
-        //indicative: indicative, subjunctive: subjunctive, imperative: imperative
-      }).then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-      axios
-      .post(`http://localhost:8000/api/form-the-present`, {
-        verb: verb, 
-        //present: present
-        //, imperfect: imperfect, future: future,
-        //aorist: aorist, perfect: perfect, pluperfect: pluperfect,
-        //active: active, middle: middle, passive: passive,
-        //indicative: indicative, subjunctive: subjunctive, imperative: imperative
-      }).then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-      axios
       .post(`http://localhost:8000/api/form-the-present-subjunctive`, {
-        verb: verb, 
-        //present: present
-        //, imperfect: imperfect, future: future,
-        //aorist: aorist, perfect: perfect, pluperfect: pluperfect,
-        //active: active, middle: middle, passive: passive,
-        //indicative: indicative, subjunctive: subjunctive, imperative: imperative
+        verb: verb,
       }).then(response => {
         console.log(response)
       })
       .catch(error => {
         console.log(error)
       });
+
+    axios
+      .post(`http://localhost:8000/api/form-the-imperfect`, {
+        verb: verb,
+      }).then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      });
+
+    //let apis = [`http://localhost:8000/api/stem-mod`, `http://localhost:8000/api/aorist-stem-mod`]
+    //
+    //axios.all(apis.map((api) => { axios.post(api, { verb: verb }).then(response => { console.log(response).catch(error => { console.log(error) }) }) }))
   }
 
   return (

@@ -1,6 +1,6 @@
 import Stem_mod from "../stem_mod";
 
-function formThePresent(verb) {
+function formThePresentImperative(verb) {
 
   let no_accent = Stem_mod(verb)
   let declension = null
@@ -36,4 +36,4 @@ function formThePresent(verb) {
   }
 }
 
-export default formThePresent
+export default formThePresentImperative

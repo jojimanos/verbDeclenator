@@ -21,8 +21,5 @@ exports.determineVoice = (req, res) => {
     }
     console.log(voice)
     
-    return res.json({
-        voice
-    })
-
+    exports.voice = voice
 }
