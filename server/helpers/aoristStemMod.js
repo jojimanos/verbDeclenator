@@ -26,10 +26,12 @@ exports.aoristStemMod = (req, res) => {
 
     let acc_stem = stem
 
-    return acc_stem
+    exports.acc_stem = acc_stem
 }
 
-export function aoristStemModNoAccent(verb) {
+exports.aoristStemModNoAccent = (req, res) => {
+
+    const { verb } = req.body
 
     let declension = null
     let stem = ""
@@ -66,6 +68,5 @@ export function aoristStemModNoAccent(verb) {
     stem.match(/^ύ/) ? no_accent = stem.replace("ύ", "υ") : no_accent
     stem.match(/.ύ./) ? no_accent = stem.replace("ύ", "υ") : no_accent
 
-    exports.acc_stem = acc_stem
     exports.no_accent = no_accent
 }

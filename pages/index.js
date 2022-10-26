@@ -56,8 +56,17 @@ export default function Home() {
       .catch(error => {
         console.log(error)
       });
-    
+
     axios.post(`http://localhost:8000/api/aorist-stem-mod`, {
+      verb: verb
+    }).then(response => {
+      console.log(response)
+    })
+      .catch(error => {
+        console.log(error)
+      });
+
+    axios.post(`http://localhost:8000/api/perfect-stem-mod`, {
       verb: verb
     }).then(response => {
       console.log(response)
