@@ -48,6 +48,15 @@ export default function Home() {
         console.log(error)
       });
 
+    axios.post(`http://localhost:8000/api/remove-preposition`,
+      { verb: verb })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      });
+
     axios.post(`http://localhost:8000/api/stem-mod`,
       { verb: verb })
       .then(response => {

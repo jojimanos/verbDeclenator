@@ -1,7 +1,9 @@
 exports.Stem_mod = (req, res) => {
 
-    const { verb } = req.body
+    //const { verb } = req.body
 
+    let myModule = require('./removePreposition')
+    let verb = myModule.type
     let declension = null
     verb.match(/.ω$/) ? declension = "thematic" : declension;
     verb.match(/.μι$/) ? declension = "athematic" : declension;
