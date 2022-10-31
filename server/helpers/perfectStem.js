@@ -2,18 +2,18 @@ exports.perfectStem = (req, res) => {
 
     //const { verb } = req.body
 
-    let myModule = require('./removePreposition')
-    let verb = myModule.type
-    let declension = null
-    verb.match(/.ω$/) ? declension = "thematic" : declension;
-    verb.match(/.μι$/) ? declension = "athematic" : declension;
-    let stem = null
-    if (declension = "thematic") {
-        stem = verb.slice(0, -1)
-    }
-    else if (declension = "athematic") {
-        stem = verb.slice(0, -2)
-    }
+    let myModule = require('./stem_mod')
+    let stem = myModule.stem
+    //let declension = null
+    //verb.match(/.ω$/) ? declension = "thematic" : declension;
+    //verb.match(/.μι$/) ? declension = "athematic" : declension;
+    //let stem = null
+    //if (declension = "thematic") {
+    //    stem = verb.slice(0, -1)
+    //}
+    //else if (declension = "athematic") {
+    //    stem = verb.slice(0, -2)
+    //}
     let sameConsonant = /^[βγδκλμνπρστ]/
 
     //let frontVowel = /^[αεο][αι][οι][ει]/

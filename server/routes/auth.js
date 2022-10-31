@@ -8,14 +8,16 @@ const { Stem_mod } = require('../helpers/stem_mod');
 const {aoristStemMod} = require('../helpers/aoristStemMod');
 const { perfectStem } = require('../helpers/perfectStem');
 const { removePreposition } = require('../helpers/removePreposition');
+const { formThePerfect } = require('../helpers/perfect/formThePerfect');
 const router = express.Router();
 
 router.post('/voice', determineVoice);
 //router.post('/settings', )
 router.post('/form-the-present', formThePresent)
 router.post('/form-the-present-subjunctive', formThePresentSubjunctive)
-router.post('/form-the-present-subjunctive', formThePresentOptative)
+router.post('/form-the-present-optative', formThePresentOptative)
 router.post('/form-the-imperfect', formTheImperfect)
+router.post('/form-the-perfect', formThePerfect)
 router.post('/remove-preposition', removePreposition)
 router.post('/stem-mod', Stem_mod)
 router.post('/aorist-stem-mod', aoristStemMod)

@@ -1,12 +1,18 @@
 exports.removePreposition = (req, res) => {
 
-    const{ verb } = req.body
+    const { verb } = req.body
     let type = ""
 
-    let prepositions = /[^ἀνα]/
+    let prepositionsTwo = [/^ἐκ/, /^ἐν/, /^ἐξ/]
+    let prepositionsThree = [/^ἀνα/, /^ἀπο/, /^δια/, /^εἰσ/,
+        /^ἐπι/, /^προ/, /^συν/, /^υπο/]
+    let prepositionsFour = [/^ἀντι/, /^ἀμφι/, /^κατα/,
+        /^μετα/, /^παρα/, /^περι/, /^προσ/, /^υπερ/]
     let compound = false
 
-    verb.match(prepositions) ? type = verb.replace("ἀνα", "") : type
+    prepositionsTwo.map((preposition) => { verb.match(preposition) ? type = verb.slice(2) : type })
+    prepositionsThree.map((preposition) => { verb.match(preposition) ? type = verb.slice(3) : type })
+    prepositionsFour.map((preposition) => { verb.match(preposition) ? type = verb.slice(4) : type })
 
     console.log(type)
 

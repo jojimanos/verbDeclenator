@@ -1,8 +1,8 @@
 exports.formThePerfect = (req, res) => {
 
-  const { verb } = req.body
+  //const { verb } = req.body
 
-  let myModule = require('../stem_mod')
+  let myModule = require('../perfectStem')
   let no_accent = myModule.stem
   let declension = null
   let perfectActiveArray
