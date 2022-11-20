@@ -14,8 +14,8 @@ function formTheAorist(verb) {
     let aoristActiveArray = aoristAct.split(" ")
     let aoristPassiveArray = aoristPass.split(" ")
     console.log(aoristActiveArray)
-    let aoristActive = <div>{aoristActiveArray.map((aorist) => <p>{aorist}</p>)}</div>
-    let aoristPassive = <div>{aoristPassiveArray.map((aorist) => <p>{aorist}</p>)}</div>
+    let aoristActive = <div>{aoristActiveArray.map((aorist, i) => <p key={i}>{aorist}</p>)}</div>
+    let aoristPassive = <div>{aoristPassiveArray.map((aorist, i) => <p key={i}>{aorist}</p>)}</div>
     return ([aoristActive, aoristPassive])
   }
   else if (declension == "athematic") {
@@ -24,8 +24,8 @@ function formTheAorist(verb) {
     let aoristPass = `${"ἔ" + stem + "άμην"} ${"ἔ" + stem + "ω"} ${"ἔ" + stem + "ατο"} ${"ἔ" + stem + "άμεθα"} ${"ἔ" + stem + "ασθε"} ${"ἔ" + stem + "αντο"}`
     let aoristActiveArray = aoristAct.split(" ")
     let aoristPassiveArray = aoristPass.split(" ")
-    let aoristActive = <div>{aoristActiveArray.map((aorist) => <p>{aorist}</p>)}</div>
-    let aoristPassive = <div>{aoristPassiveArray.map((aorist) => <p>{aorist}</p>)}</div>
+    let aoristActive = <div>{aoristActiveArray.map((aorist, i) => <p key={i}>{aorist}</p>)}</div>
+    let aoristPassive = <div>{aoristPassiveArray.map((aorist, i) => <p key={i}>{aorist}</p>)}</div>
     return [aoristActive, aoristPassive]
   }
   else if (declension == null) {
