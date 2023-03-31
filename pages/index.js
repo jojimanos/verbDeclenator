@@ -3,7 +3,6 @@ import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import output from './components/output'
 import Navbar from './components/settings/navbar'
-import axios from 'axios'
 
 export default function Home() {
 
@@ -22,102 +21,64 @@ export default function Home() {
   const [subjunctive, setSubjunctive] = useState(false)
   const [optative, setOptative] = useState(false)
   const [imperative, setImperative] = useState(false)
-  const handleActive = () => { setActive(!active), console.log(active) }
-  const handleMiddle = () => { setMiddle(!middle), console.log(middle) }
-  const handlePresent = () => { setPresent(!present), console.log(present) }
-  const handleImperfect = () => { setImperfect(!imperfect), console.log(imperfect) }
-  const handleFuture = () => { setFuture(!future), console.log(future) }
-  const handleAorist = () => { setAorist(!aorist), console.log(aorist) }
-  const handlePerfect = () => { setPerfect(!perfect), console.log(perfect) }
-  const handlePluperfect = () => { setPluperfect(!pluperfect), console.log(pluperfect) }
-  const handleIndicative = () => { setIndicative(!indicative), console.log(indicative) }
-  const handleSubjunctive = () => { setSubjunctive(!subjunctive), console.log(subjunctive) }
-  const handleOptative = () => { setOptative(!optative), console.log(optative) }
-  const handleImperative = () => { setImperative(!imperative), console.log(imperative) }
+  const [tense, setTense] = useState(false)
+  const [voice, setVoice] = useState(false)
+  const [mood, setMood] = useState(false)
+  const [error, setError] = useState(false)
+  const handleActive = () => { setActive(!active) }
+  const handleMiddle = () => { setMiddle(!middle) }
+  const handlePassive = () => {setPassive(!passive)}
+  const handlePresent = () => { setPresent(!present) }
+  const handleImperfect = () => { setImperfect(!imperfect) }
+  const handleFuture = () => { setFuture(!future) }
+  const handleAorist = () => { setAorist(!aorist) }
+  const handlePerfect = () => { setPerfect(!perfect) }
+  const handlePluperfect = () => { setPluperfect(!pluperfect) }
+  const handleIndicative = () => { setIndicative(!indicative) }
+  const handleSubjunctive = () => { setSubjunctive(!subjunctive) }
+  const handleOptative = () => { setOptative(!optative) }
+  const handleImperative = () => { setImperative(!imperative) }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    axios
-      .post(`http://localhost:8000/api/voice`, {
-        active: active, middle: middle, passive: passive,
-      }).then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-    axios.post(`http://localhost:8000/api/remove-preposition`,
-      { verb: verb })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-    axios.post(`http://localhost:8000/api/stem-mod`,
-      { verb: verb })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-    axios.post(`http://localhost:8000/api/aorist-stem-mod`, {
-      verb: verb
-    }).then(response => {
-      console.log(response)
-    })
-      .catch(error => {
-        console.log(error)
-      });
-
-    axios.post(`http://localhost:8000/api/perfect-stem-mod`, {
-      verb: verb
-    }).then(response => {
-      console.log(response)
-    })
-      .catch(error => {
-        console.log(error)
-      });
-
-    axios
-      .post(`http://localhost:8000/api/form-the-present`, {
-        verb: verb
-      }).then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-    axios
-      .post(`http://localhost:8000/api/form-the-present-subjunctive`, {
-        verb: verb,
-      }).then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-    axios
-      .post(`http://localhost:8000/api/form-the-imperfect`, {
-        verb: verb,
-      }).then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-    //let apis = [`http://localhost:8000/api/stem-mod`, `http://localhost:8000/api/aorist-stem-mod`]
-    //
-    //axios.all(apis.map((api) => { axios.post(api, { verb: verb }).then(response => { console.log(response).catch(error => { console.log(error) }) }) }))
+  const isTenseSelected = () => {
+    setTense(false)
+    if (present || imperfect || aorist || future || perfect || pluperfect === true) {
+      setTense(true)
+    }
   }
+  
+  const isVoiceSelected = () => {
+    setVoice(false)
+    if (active || middle || passive === true) {
+      setVoice(true)
+    }
+  }
+
+  const isMoodSelected = () => {
+    setMood(false)
+    if (indicative || subjunctive || optative || imperative === true) {
+      setMood(true)
+    }
+  }
+      console.log("Tense selected is", tense)
+      console.log("Voice selected is", voice)
+      console.log("Mood selected is", mood)
+  
+  const submitForm = (e) => {
+    e.preventDefault();
+    if (verb.length === 0) return;
+    isTenseSelected(), 
+    isVoiceSelected(), 
+    isMoodSelected();
+
+    if (tense === false || mood === false) {
+      setError(true)
+    } else {
+    setError(false);
+    setPresentDeclension(output(verb, active, middle, passive, indicative, subjunctive, optative, imperative, present, imperfect, future, aorist)) 
+    }
+  }
+
+  console.log("error", error)
 
   return (
     <div className={styles.container}>
@@ -159,6 +120,7 @@ export default function Home() {
               <input required id='pluperfect' type="checkbox" name="declension" onClick={handlePluperfect} />
               <label for='pluperfect'>Pluperfect</label>
             </div>
+            <div>{"Please check at least one tense"}</div>
           </fieldset>
           <fieldset>
             <h3>Voice</h3>
@@ -169,6 +131,10 @@ export default function Home() {
             <div>
               <input required id='middle' type="checkbox" name="declension" onClick={handleMiddle} />
               <label for='middle'>Middle</label>
+            </div>
+            <div>
+              <input required id='passive' type="checkbox" name="declension" onClick={handlePassive} />
+              <label for='middle'>Passive</label>
             </div>
           </fieldset>
           <fieldset>
@@ -191,9 +157,9 @@ export default function Home() {
             </div>
           </fieldset>
         </fieldset>
-        <button for="verb" onClick={() => setPresentDeclension(output(verb, active, middle, passive, indicative, subjunctive, optative, imperative, present, imperfect, future, aorist))}>Submit</button>
-        <button for="verb" onClick={handleSubmit}>Submit</button>
-        <div>{presentDeclension}</div>
+        <button for="verb" onClick={submitForm}>Submit</button>
+        <div>{tense && voice && mood && verb.length ? presentDeclension : null}</div>
+        <div>{error ? <div>Please check your options</div> : null}</div>
       </main>
     </div>
   )

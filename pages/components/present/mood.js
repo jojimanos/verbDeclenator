@@ -25,7 +25,15 @@ const presentDeclension = (verb, active, middle, indicative, subjunctive, optati
 
     let imperativeForm = formThePresentImperative(verb)
 
-    return (<div className={styles.whole_tense}><h3>{tense}</h3><div className={styles.index}>{indicative && (<div><h4>{mood[0]}</h4><p>{presentOutput(voice, indicativeForm)}</p></div>)}{subjunctive && (<div><h4>{mood[1]}</h4><p>{presentOutput(voice, subjunctiveForm)}</p></div>)}{optative && (<div><h4>{mood[2]}</h4><p>{presentOutput(voice, optativeForm)}</p></div>)}{imperative && (<div><h4>{mood[3]}</h4><p>{presentOutput(voice, imperativeForm)}</p></div>)}</div></div>)
+    return (<div className={styles.whole_tense}>
+        <h3>{tense}</h3>
+        <div className={styles.index}>
+        {indicative && (<div><h4>{mood[0]}</h4><p>{presentOutput(voice, indicativeForm)}</p></div>)}
+        {subjunctive && (<div><h4>{mood[1]}</h4><p>{presentOutput(voice, subjunctiveForm)}</p></div>)}
+        {optative && (<div><h4>{mood[2]}</h4><p>{presentOutput(voice, optativeForm)}</p></div>)}
+        {imperative && (<div><h4>{mood[3]}</h4><p>{presentOutput(voice, imperativeForm)}</p></div>)}
+        </div>
+        </div>)
 
 }
 export default presentDeclension
