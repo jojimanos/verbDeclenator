@@ -70,7 +70,7 @@ export default function Home() {
     isVoiceSelected(), 
     isMoodSelected();
 
-    if (tense === false || mood === false) {
+    if (tense === false || mood === false || voice ===false) {
       setError(true)
     } else {
     setError(false);
@@ -120,7 +120,7 @@ export default function Home() {
               <input required id='pluperfect' type="checkbox" name="declension" onClick={handlePluperfect} />
               <label for='pluperfect'>Pluperfect</label>
             </div>
-            <div>{"Please check at least one tense"}</div>
+            {error && !tense && <div>Please check at least one tense</div>}
           </fieldset>
           <fieldset>
             <h3>Voice</h3>
@@ -136,6 +136,7 @@ export default function Home() {
               <input required id='passive' type="checkbox" name="declension" onClick={handlePassive} />
               <label for='middle'>Passive</label>
             </div>
+            {error && !voice && <div>Please check at least one tense</div>}
           </fieldset>
           <fieldset>
             <h3>Mood</h3>
@@ -155,6 +156,7 @@ export default function Home() {
               <input required id='imperative' type="checkbox" name="declension" onClick={handleImperative} />
               <label for='optative'>Imperative</label>
             </div>
+            {error && !mood && <div>Please check at least one tense</div>}
           </fieldset>
         </fieldset>
         <button for="verb" onClick={submitForm}>Submit</button>
