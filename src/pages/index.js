@@ -3,8 +3,12 @@ import { useState } from "react";
 import styles from "../../styles/Home.module.css";
 import output from "../components/output";
 import Navbar from "../components/settings/navbar";
+import {useContext} from 'react'
+import StateContext from "../context/stateContext"
 
 export default function Home() {
+  const [universalState, universalStateDispatch] = useContext(StateContext) 
+
   const [verb, setVerb] = useState("");
   const [presentDeclension, setPresentDeclension] = useState("");
   const [present, setPresent] = useState(false);
@@ -140,8 +144,8 @@ export default function Home() {
             required
             id="verb"
             type="text"
-            onChange={(e) => setVerb(e.target.value)}
-            value={verb}
+            onChange={(e) => universalStateDispatch({type: "setVerb", verbInput: e.target.value})}
+            value={universalState.verb}
           />
           <fieldset>
             <h3>Choose Tense</h3>
