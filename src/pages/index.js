@@ -101,7 +101,7 @@ export default function Home() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    if (verb.length === 0) return;
+    if (universalState.verb.length === 0) return;
     isTenseSelected(), isVoiceSelected(), isMoodSelected();
 
     if (tense === false || mood === false || voice === false) {
@@ -110,7 +110,8 @@ export default function Home() {
       setError(false);
       setPresentDeclension(
         output(
-          verb,
+          // verb,
+          universalState.verb,
           active,
           middle,
           passive,
@@ -156,6 +157,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePresent}
+            value={universalState.verb}
               />
               <label for="present">Present</label>
             </div>
@@ -166,6 +168,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleImperfect}
+            value={universalState.verb}
               />
               <label for="imperfect">Imperfect</label>
             </div>
@@ -176,6 +179,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleFuture}
+            value={universalState.verb}
               />
               <label for="future">Future</label>
             </div>
@@ -186,6 +190,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleAorist}
+            value={universalState.verb}
               />
               <label for="Aorist">Aorist</label>
             </div>
@@ -196,6 +201,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePerfect}
+            value={universalState.verb}
               />
               <label for="perfect">Perfect</label>
             </div>
@@ -206,6 +212,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePluperfect}
+            value={universalState.verb}
               />
               <label for="pluperfect">Pluperfect</label>
             </div>
@@ -220,6 +227,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleActive}
+            value={universalState.verb}
               />
               <label for="active">Active</label>
             </div>
@@ -230,6 +238,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleMiddle}
+            value={universalState.verb}
               />
               <label for="middle">Middle</label>
             </div>
@@ -240,6 +249,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePassive}
+            value={universalState.verb}
               />
               <label for="middle">Passive</label>
             </div>
@@ -254,6 +264,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleIndicative}
+            value={universalState.verb}
               />
               <label for="indicative">Indicative</label>
             </div>
@@ -264,6 +275,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleSubjunctive}
+            value={universalState.verb}
               />
               <label for="subjunctive">Subjunctive</label>
             </div>
@@ -274,6 +286,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleOptative}
+            value={universalState.verb}
               />
               <label for="optative">Optative</label>
             </div>
@@ -284,6 +297,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleImperative}
+            value={universalState.verb}
               />
               <label for="optative">Imperative</label>
             </div>
@@ -294,7 +308,7 @@ export default function Home() {
           Submit
         </button>
         <div>
-          {tense && voice && mood && verb.length ? presentDeclension : null}
+          {tense && voice && mood && universalState.verb.length ? presentDeclension : null}
         </div>
         <div>{error ? <div>Please check your options</div> : null}</div>
       </main>
