@@ -7,11 +7,11 @@ import {useContext} from 'react'
 import StateContext from "../context/stateContext"
 
 export default function Home() {
-  const [universalState, universalStateDispatch] = useContext(StateContext) 
+  const [universalState, dispatch] = useContext(StateContext) 
 
-  const [verb, setVerb] = useState("");
+  // const [verb, setVerb] = useState("");
   const [presentDeclension, setPresentDeclension] = useState("");
-  const [present, setPresent] = useState(false);
+  // const [present, setPresent] = useState(false);
   const [imperfect, setImperfect] = useState(false);
   const [future, setFuture] = useState(false);
   const [aorist, setAorist] = useState(false);
@@ -38,7 +38,10 @@ export default function Home() {
     setPassive(!passive);
   };
   const handlePresent = () => {
-    setPresent(!present);
+    console.log(universalState.displayPresent)
+    // setPresent(!present);
+    dispatch({type: "displayPresent", displayPresent: !universalState.displayPresent})
+    console.log(universalState.displayPresent)
   };
   const handleImperfect = () => {
     setImperfect(!imperfect);
@@ -71,7 +74,8 @@ export default function Home() {
   const isTenseSelected = () => {
     setTense(false);
     if (
-      present ||
+      // present ||
+      universalState.displayPresent ||
       imperfect ||
       aorist ||
       future ||
@@ -105,9 +109,9 @@ export default function Home() {
     isTenseSelected(), isVoiceSelected(), isMoodSelected();
 
     if (tense === false || mood === false || voice === false) {
-      setError(true);
+      dispatch({type:"isErrorTrue", isErrorTrue: true });
     } else {
-      setError(false);
+      dispatch({type:"isErrorTrue", isErrorTrue: false });
       setPresentDeclension(
         output(
           // verb,
@@ -119,13 +123,15 @@ export default function Home() {
           subjunctive,
           optative,
           imperative,
-          present,
+          // present,
+          universalState.displayPresent,
           imperfect,
           future,
           aorist
         )
       );
     }
+    console.log(universalState.verb, universalState.displayPresent, universalState.displayActive)
   };
 
   console.log("error", error);
@@ -145,7 +151,7 @@ export default function Home() {
             required
             id="verb"
             type="text"
-            onChange={(e) => universalStateDispatch({type: "setVerb", verbInput: e.target.value})}
+            onChange={(e) => dispatch({type: "setVerb", verbInput: e.target.value})}
             value={universalState.verb}
           />
           <fieldset>
@@ -157,7 +163,7 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePresent}
-            value={universalState.verb}
+            value={universalState.displayPresent}
               />
               <label for="present">Present</label>
             </div>
