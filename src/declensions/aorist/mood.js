@@ -6,7 +6,7 @@ import formTheAoristOptative from "./formTheAoristOptative"
 import formTheAoristImperative from "./formTheAoristImperative"
 import styles from "../../../styles/Home.module.css"
 
-const aoristDeclension = (verb, active, passive, indicative, subjunctive, optative, imperative) => {
+const aoristDeclension = (verb, active, middle, passive, indicative, subjunctive, optative, imperative) => {
 
     let tense = "Aorist"
 

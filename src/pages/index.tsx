@@ -1,33 +1,31 @@
+import React from "react";
 import Head from "next/head";
 import { useState } from "react";
 import styles from "../../styles/Home.module.css";
-import output from "../components/output";
-import Navbar from "../components/settings/navbar";
-import {useContext} from 'react'
-import StateContext from "../context/stateContext"
+import output from "../declensions/output";
+import Navbar from "../declensions/settings/navbar";
 
 export default function Home() {
-  const [universalState, dispatch] = useContext(StateContext) 
-
-  // const [verb, setVerb] = useState("");
-  const [presentDeclension, setPresentDeclension] = useState("");
-  // const [present, setPresent] = useState(false);
-  const [imperfect, setImperfect] = useState(false);
-  const [future, setFuture] = useState(false);
-  const [aorist, setAorist] = useState(false);
-  const [perfect, setPerfect] = useState(false);
-  const [pluperfect, setPluperfect] = useState(false);
-  const [active, setActive] = useState(false);
-  const [middle, setMiddle] = useState(false);
-  const [passive, setPassive] = useState(false);
-  const [indicative, setIndicative] = useState(false);
-  const [subjunctive, setSubjunctive] = useState(false);
-  const [optative, setOptative] = useState(false);
-  const [imperative, setImperative] = useState(false);
-  const [tense, setTense] = useState(false);
-  const [voice, setVoice] = useState(false);
-  const [mood, setMood] = useState(false);
-  const [error, setError] = useState(false);
+  const [verb, setVerb] = useState<string>("");
+  const [presentDeclension, setPresentDeclension] =
+    useState<React.ReactElement>();
+  const [present, setPresent] = useState<boolean>(false);
+  const [imperfect, setImperfect] = useState<boolean>(false);
+  const [future, setFuture] = useState<boolean>(false);
+  const [aorist, setAorist] = useState<boolean>(false);
+  const [perfect, setPerfect] = useState<boolean>(false);
+  const [pluperfect, setPluperfect] = useState<boolean>(false);
+  const [active, setActive] = useState<boolean>(false);
+  const [middle, setMiddle] = useState<boolean>(false);
+  const [passive, setPassive] = useState<boolean>(false);
+  const [indicative, setIndicative] = useState<boolean>(false);
+  const [subjunctive, setSubjunctive] = useState<boolean>(false);
+  const [optative, setOptative] = useState<boolean>(false);
+  const [imperative, setImperative] = useState<boolean>(false);
+  const [tense, setTense] = useState<boolean>(false);
+  const [voice, setVoice] = useState<boolean>(false);
+  const [mood, setMood] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const handleActive = () => {
     setActive(!active);
   };
@@ -38,10 +36,7 @@ export default function Home() {
     setPassive(!passive);
   };
   const handlePresent = () => {
-    console.log(universalState.displayPresent)
-    // setPresent(!present);
-    dispatch({type: "displayPresent", displayPresent: !universalState.displayPresent})
-    console.log(universalState.displayPresent)
+    setPresent(!present);
   };
   const handleImperfect = () => {
     setImperfect(!imperfect);
@@ -74,8 +69,7 @@ export default function Home() {
   const isTenseSelected = () => {
     setTense(false);
     if (
-      // present ||
-      universalState.displayPresent ||
+      present ||
       imperfect ||
       aorist ||
       future ||
@@ -103,19 +97,20 @@ export default function Home() {
   console.log("Voice selected is", voice);
   console.log("Mood selected is", mood);
 
-  const submitForm = (e) => {
+  const submitForm = (e: any) => {
     e.preventDefault();
-    if (universalState.verb.length === 0) return;
+    // if (!tense && !voice && !mood) return;
     isTenseSelected(), isVoiceSelected(), isMoodSelected();
 
     if (tense === false || mood === false || voice === false) {
-      dispatch({type:"isErrorTrue", isErrorTrue: true });
+      // dispatch({type:"isErrorTrue", isErrorTrue: true });
+      console.log("There is a problem")
+      return
     } else {
-      dispatch({type:"isErrorTrue", isErrorTrue: false });
+      // dispatch({type:"isErrorTrue", isErrorTrue: false });
       setPresentDeclension(
-        output(
-          // verb,
-          universalState.verb,
+        output({
+          verb,
           active,
           middle,
           passive,
@@ -123,15 +118,13 @@ export default function Home() {
           subjunctive,
           optative,
           imperative,
-          // present,
-          universalState.displayPresent,
+          present,
           imperfect,
           future,
-          aorist
-        )
+          aorist,
+        })
       );
     }
-    console.log(universalState.verb, universalState.displayPresent, universalState.displayActive)
   };
 
   console.log("error", error);
@@ -151,8 +144,8 @@ export default function Home() {
             required
             id="verb"
             type="text"
-            onChange={(e) => dispatch({type: "setVerb", verbInput: e.target.value})}
-            value={universalState.verb}
+            onChange={(e) => setVerb(e.target.value)}
+            value={verb}
           />
           <fieldset>
             <h3>Choose Tense</h3>
@@ -163,9 +156,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePresent}
-            value={universalState.displayPresent}
               />
-              <label for="present">Present</label>
+              <label htmlFor="present">Present</label>
             </div>
             <div>
               <input
@@ -174,9 +166,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleImperfect}
-            value={universalState.verb}
               />
-              <label for="imperfect">Imperfect</label>
+              <label htmlFor="imperfect">Imperfect</label>
             </div>
             <div>
               <input
@@ -185,9 +176,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleFuture}
-            value={universalState.verb}
               />
-              <label for="future">Future</label>
+              <label htmlFor="future">Future</label>
             </div>
             <div>
               <input
@@ -196,9 +186,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleAorist}
-            value={universalState.verb}
               />
-              <label for="Aorist">Aorist</label>
+              <label htmlFor="Aorist">Aorist</label>
             </div>
             <div>
               <input
@@ -207,9 +196,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePerfect}
-            value={universalState.verb}
               />
-              <label for="perfect">Perfect</label>
+              <label htmlFor="perfect">Perfect</label>
             </div>
             <div>
               <input
@@ -218,9 +206,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePluperfect}
-            value={universalState.verb}
               />
-              <label for="pluperfect">Pluperfect</label>
+              <label htmlFor="pluperfect">Pluperfect</label>
             </div>
             {error && !tense && <div>Please check at least one tense</div>}
           </fieldset>
@@ -233,9 +220,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleActive}
-            value={universalState.verb}
               />
-              <label for="active">Active</label>
+              <label htmlFor="active">Active</label>
             </div>
             <div>
               <input
@@ -244,9 +230,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleMiddle}
-            value={universalState.verb}
               />
-              <label for="middle">Middle</label>
+              <label htmlFor="middle">Middle</label>
             </div>
             <div>
               <input
@@ -255,9 +240,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handlePassive}
-            value={universalState.verb}
               />
-              <label for="middle">Passive</label>
+              <label htmlFor="middle">Passive</label>
             </div>
             {error && !voice && <div>Please check at least one tense</div>}
           </fieldset>
@@ -270,9 +254,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleIndicative}
-            value={universalState.verb}
               />
-              <label for="indicative">Indicative</label>
+              <label htmlFor="indicative">Indicative</label>
             </div>
             <div>
               <input
@@ -281,9 +264,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleSubjunctive}
-            value={universalState.verb}
               />
-              <label for="subjunctive">Subjunctive</label>
+              <label htmlFor="subjunctive">Subjunctive</label>
             </div>
             <div>
               <input
@@ -292,9 +274,8 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleOptative}
-            value={universalState.verb}
               />
-              <label for="optative">Optative</label>
+              <label htmlFor="optative">Optative</label>
             </div>
             <div>
               <input
@@ -303,18 +284,17 @@ export default function Home() {
                 type="checkbox"
                 name="declension"
                 onClick={handleImperative}
-            value={universalState.verb}
               />
-              <label for="optative">Imperative</label>
+              <label htmlFor="optative">Imperative</label>
             </div>
             {error && !mood && <div>Please check at least one tense</div>}
           </fieldset>
         </fieldset>
-        <button for="verb" onClick={submitForm}>
+        <button id="verb" onClick={submitForm}>
           Submit
         </button>
         <div>
-          {tense && voice && mood && universalState.verb.length ? presentDeclension : null}
+          {tense && voice && mood && verb.length ? presentDeclension : null}
         </div>
         <div>{error ? <div>Please check your options</div> : null}</div>
       </main>

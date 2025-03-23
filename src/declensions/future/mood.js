@@ -4,7 +4,7 @@ import formTheFuture from "./formTheFuture"
 import formTheFutureOptative from "./formTheFutureOptative"
 import styles from "../../../styles/Home.module.css"
 
-const futureDeclension = (verb, active, passive, indicative, optative) => {
+const futureDeclension = (verb, active, middle, passive, indicative, optative) => {
 
     let tense = "Future"
 

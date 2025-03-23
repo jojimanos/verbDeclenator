@@ -1,4 +1,4 @@
-function aoristStemMod(verb) {
+export function aoristStemMod(verb) {
   let declension = null;
   let stem = "";
   verb.match(/.ω$/) ? (declension = "thematic") : declension;
@@ -62,5 +62,3 @@ export function aoristStemModNoAccent(verb) {
 
   return no_accent;
 }
-
-export default aoristStemMod;
