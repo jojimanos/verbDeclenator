@@ -1,6 +1,6 @@
-function CircumflexStemMod(verb) {
+function CircumflexStemMod(verb: string) {
         
-    let declension = null
+    let declension: string | null = null
     let stem = ""
     verb.match(/.ω$/) ? declension = "thematic" : declension;
     verb.match(/.μι$/) ? declension = "athematic" : declension;

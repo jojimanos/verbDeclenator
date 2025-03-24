@@ -1,10 +1,10 @@
 import {aoristStemMod, aoristStemModNoAccent} from '../aoristStemMod';
 
-function formTheAorist(verb) {
+function formTheAorist(verb: string) {
 
   let accent = aoristStemMod(verb)
   let no_accent = aoristStemModNoAccent(verb)
-  let declension = null
+  let declension: string | null = null
   verb.match(/.ω$/) ? declension = "thematic" : declension;
   verb.match(/.μι$/) ? declension = "athematic" : declension;
   console.log(declension);

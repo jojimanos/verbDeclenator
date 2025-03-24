@@ -1,5 +1,5 @@
-export function aoristStemMod(verb) {
-  let declension = null;
+export function aoristStemMod(verb: string) {
+  let declension: string | null = null;
   let stem = "";
   verb.match(/.ω$/) ? (declension = "thematic") : declension;
   verb.match(/.μι$/) ? (declension = "athematic") : declension;
@@ -25,8 +25,8 @@ export function aoristStemMod(verb) {
   return acc_stem;
 }
 
-export function aoristStemModNoAccent(verb) {
-  let declension = null;
+export function aoristStemModNoAccent(verb: string) {
+  let declension: string | null = null;
   let stem = "";
   verb.match(/.ω$/) ? (declension = "thematic") : declension;
   verb.match(/.μι$/) ? (declension = "athematic") : declension;

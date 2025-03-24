@@ -1,19 +1,19 @@
 import Stem_mod from "../stem_mod";
 
-function formThePresentImperative(verb) {
+function formThePresent(verb: string) {
   let no_accent = Stem_mod(verb);
-  let declension = null;
+  let declension: string | null = null;
   verb.match(/.ω$/) ? (declension = "thematic") : declension;
   verb.match(/.μι$/) ? (declension = "athematic") : declension;
   console.log(declension);
   if (declension == "thematic") {
     let stem = verb.slice(0, -1);
-    let presentAct = `${stem + "ε"} ${no_accent + "έτω"} ${stem + "ετε"} ${
-      no_accent + "όντων, -έτωσαν"
-    }`;
-    let presentMidd = `${stem + "ου"} ${no_accent + "έσθω"} ${stem + "εσθε"} ${
-      no_accent + "έσθων, -έσθωσαν"
-    }`;
+    let presentAct = `${stem + "ω"} ${stem + "εις"} ${stem + "ει"} ${
+      stem + "ομεν"
+    } ${stem + "ετε"} ${stem + "ουσιν"}`;
+    let presentMidd = `${stem + "ομαι"} ${stem + "ει, -ῃ"} ${stem + "εται"} ${
+      no_accent + "όμεθα"
+    } ${stem + "εσθε"} ${stem + "ονται"}`;
     let presentActiveArray = presentAct.split(" ");
     let presentMiddleArray = presentMidd.split(" ");
     console.log(presentActiveArray);
@@ -34,15 +34,14 @@ function formThePresentImperative(verb) {
     return [presentActive, presentMiddle];
   } else if (declension == "athematic") {
     let stem = verb.slice(0, -2);
-    let presentAct = `${stem + ""} ${stem + "τω"} ${stem + "τε"} ${
-      stem + "ντων"
-    }`;
-    let presentMidd = `${stem + "σο"} ${stem + "σθω"} ${stem + "σθε"} ${
-      stem + "σθων"
-    }`;
+    let presentAct = `${stem + "μι"} ${stem + "ς"} ${stem + "σιν"} ${
+      stem + "μεν"
+    } ${stem + "τε"} ${stem + "σιν"}`;
+    let presentMidd = `${stem + "μαι"} ${stem + "σαι"} ${stem + "ται"} ${
+      stem + "μεθα"
+    } ${stem + "σθε"} ${stem + "νται"}`;
     let presentActiveArray = presentAct.split(" ");
     let presentMiddleArray = presentMidd.split(" ");
-    console.log(presentActiveArray);
     let presentActive = (
       <div>
         {presentActiveArray.map((present, i) => (
@@ -65,4 +64,4 @@ function formThePresentImperative(verb) {
   }
 }
 
-export default formThePresentImperative;
+export default formThePresent;

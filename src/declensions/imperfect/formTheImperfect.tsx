@@ -1,8 +1,8 @@
 import Stem_mod from "../stem_mod";
 
-function formTheImperfect(verb) {
+function formTheImperfect(verb: string) {
   let no_accent = Stem_mod(verb);
-  let declension = null;
+  let declension: string | null = null;
   verb.match(/.ω$/) ? (declension = "thematic") : declension;
   verb.match(/.μι$/) ? (declension = "athematic") : declension;
   console.log(declension);

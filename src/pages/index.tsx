@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import styles from "../../styles/Home.module.css";
 import output from "../declensions/output";
-import Navbar from "../declensions/settings/navbar";
+import Navbar from "../declensions/settings/navbar.js";
 
 export default function Home() {
   const [verb, setVerb] = useState<string>("");

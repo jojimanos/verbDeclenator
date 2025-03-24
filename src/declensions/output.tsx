@@ -39,6 +39,7 @@ function output({
           {presentDeclension(
             verb,
             active,
+            passive,
             middle,
             indicative,
             subjunctive,

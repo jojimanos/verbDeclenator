@@ -1,9 +1,9 @@
-function Stem_mod(verb) {
+function Stem_mod(verb: string) {
         
-    let declension = null
+    let declension: string | null = null
     verb.match(/.ω$/) ? declension = "thematic" : declension;
     verb.match(/.μι$/) ? declension = "athematic": declension;
-    let stem = null 
+    let stem: string | null = null 
     verb.match(/^ά/) ? stem = verb.replace("ά", "α") : stem = verb
     verb.match(/.ά./) ? stem = verb.replace("ά", "α") : stem
     verb.match(/^έ/) ? stem = verb.replace("έ", "ε") : stem
