@@ -5,7 +5,6 @@ import errorMessage from "./errorMessage";
 import formThePresentSubjunctive from "./formThePresentSubjunctive";
 import formThePresentOptative from "./formThePresentOptative";
 import formThePresentImperative from "./formThePresentImperative";
-import styles from "../../../styles/Home.module.css";
 import { JSX } from "react";
 
 const presentDeclension = (
@@ -35,9 +34,9 @@ const presentDeclension = (
   let imperativeForm = formThePresentImperative(verb);
 
   return (
-    <div className={styles.whole_tense}>
+    <div >
       <h3>{tense}</h3>
-      <div className={styles.index}>
+      <div >
         {indicative && (
           <div>
             <h4>{mood[0]}</h4>

@@ -2,7 +2,6 @@ import determineVoice from "../determineVoice";
 import futureOutput from "./output";
 import formTheFuture from "./formTheFuture";
 import formTheFutureOptative from "./formTheFutureOptative";
-import styles from "../../../styles/Home.module.css";
 import { JSX } from "react";
 
 const futureDeclension = (
@@ -26,9 +25,9 @@ const futureDeclension = (
   let optativeForm = formTheFutureOptative(verb);
 
   return (
-    <div className={styles.whole_tense}>
+    <div >
       <h3>{tense}</h3>
-      <div className={styles.index}>
+      <div >
         {indicative && (
           <p>
             <h4>{mood[0]}</h4>

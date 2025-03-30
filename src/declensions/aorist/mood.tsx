@@ -4,7 +4,6 @@ import formTheAorist from "./formTheAorist";
 import formTheAoristSubjunctive from "./formTheAoristSubjunctive";
 import formTheAoristOptative from "./formTheAoristOptative";
 import formTheAoristImperative from "./formTheAoristImperative";
-import styles from "../../../styles/Home.module.css";
 import { JSX } from "react";
 
 const aoristDeclension = (
@@ -34,9 +33,9 @@ const aoristDeclension = (
   let imperativeForm = formTheAoristImperative(verb);
 
   return (
-    <div className={styles.whole_tense}>
+    <div >
       <h3>{tense}</h3>
-      <div className={styles.index}>
+      <div >
         {indicative && (
           <p>
             <h4>{mood[0]}</h4>
