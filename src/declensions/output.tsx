@@ -4,6 +4,8 @@ import errorMessage from "./present/errorMessage";
 import presentDeclension from "./present/mood";
 import aoristDeclension from "./aorist/mood";
 import futureDeclension from "./future/mood";
+import { Card } from "@/components/ui/card";
+import PresentDeclension from "./present/mood";
 
 function output({
   verb,
@@ -36,19 +38,19 @@ function output({
     <div>
       {present && (
         <p>
-          {presentDeclension(
-            verb,
-            active,
-            passive,
-            middle,
-            indicative,
-            subjunctive,
-            optative,
-            imperative
-          )}
+          <PresentDeclension
+            verb={verb}
+            active={active}
+            passive={passive}
+            middle={middle}
+            indicative={indicative}
+            subjunctive={subjunctive}
+            optative={optative}
+            imperative={imperative}
+          />
         </p>
       )}
-      {imperfect && <p>{imperfectExport(verb, active, middle, passive)}</p>}
+      {/* {imperfect && <p>{imperfectExport(verb, active, middle, passive)}</p>}
       {future && (
         <p>
           {futureDeclension(
@@ -74,10 +76,9 @@ function output({
             imperative
           )}
         </p>
-      )}
+      )} */}
     </div>
   );
-
 }
 
 export default output;

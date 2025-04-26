@@ -6,9 +6,10 @@ import formThePresentSubjunctive from "./formThePresentSubjunctive";
 import formThePresentOptative from "./formThePresentOptative";
 import formThePresentImperative from "./formThePresentImperative";
 import { JSX } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const presentDeclension = (
-  verb: string,
+interface PresentDeclensionProps {
+    verb: string,
   active: boolean,
   passive: boolean,
   middle: boolean,
@@ -16,8 +17,21 @@ const presentDeclension = (
   subjunctive: boolean,
   optative: boolean,
   imperative: boolean
+}
+
+const PresentDeclension = (
+  {
+    verb,
+  active,
+  passive,
+  middle,
+  indicative,
+  subjunctive,
+  optative,
+  imperative
+}: PresentDeclensionProps
 ) => {
-  let voice = determineVoice({active, middle, passive});
+  let voice = determineVoice({ active, middle, passive });
 
   console.log(voice);
 
@@ -34,9 +48,13 @@ const presentDeclension = (
   let imperativeForm = formThePresentImperative(verb);
 
   return (
-    <div >
-      <h3>{tense}</h3>
-      <div >
+    <Card className="flex flex-col justify-center items-center">
+      <CardHeader className="flex flex-col justify-center items-center">
+        <CardTitle>{tense}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex justify-center items-center gap-x-8">
+
         {indicative && (
           <div>
             <h4>{mood[0]}</h4>
@@ -61,8 +79,9 @@ const presentDeclension = (
             <p>{presentOutput(voice, imperativeForm as JSX.Element[])}</p>
           </div>
         )}
-      </div>
-    </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };
-export default presentDeclension;
+export default PresentDeclension;
