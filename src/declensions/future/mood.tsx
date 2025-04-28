@@ -4,19 +4,27 @@ import formTheFuture from "./formTheFuture";
 import formTheFutureOptative from "./formTheFutureOptative";
 import { JSX } from "react";
 
-const futureDeclension = (
-  verb: string,
-  active: boolean,
-  middle: boolean,
-  passive: boolean,
-  indicative: boolean,
-  optative: boolean
-) => {
-  let tense = "Future";
+interface FutureDeclensionProps {
+  verb: string;
+  active: boolean;
+  middle: boolean;
+  passive: boolean;
+  indicative: boolean;
+  optative: boolean;
+  mood: string[]
+}
 
-  let mood = ["Indicative", "Subjunctive", "Optative", "Imperative"];
+const FutureDeclension = ({
+  verb,
+  active,
+  middle,
+  passive,
+  indicative,
+  optative,
+  mood
+}: FutureDeclensionProps) => {
 
-  let voice = determineVoice({active, middle, passive});
+  let voice = determineVoice({ active, middle, passive });
 
   console.log(voice);
 
@@ -25,23 +33,20 @@ const futureDeclension = (
   let optativeForm = formTheFutureOptative(verb);
 
   return (
-    <div >
-      <h3>{tense}</h3>
-      <div >
-        {indicative && (
-          <p>
-            <h4>{mood[0]}</h4>
-            {futureOutput(voice, indicativeForm as JSX.Element[])}
-          </p>
-        )}
-        {optative && (
-          <p>
-            <h4>{mood[2]}</h4>
-            {futureOutput(voice, optativeForm as JSX.Element[])}
-          </p>
-        )}
-      </div>
-    </div>
+    <>
+      {indicative && (
+        <p>
+          <h4>{mood[0]}</h4>
+          {futureOutput(voice, indicativeForm as JSX.Element[])}
+        </p>
+      )}
+      {optative && (
+        <p>
+          <h4>{mood[2]}</h4>
+          {futureOutput(voice, optativeForm as JSX.Element[])}
+        </p>
+      )}
+    </>
   );
 };
-export default futureDeclension;
+export default FutureDeclension;

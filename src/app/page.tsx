@@ -175,7 +175,7 @@ export default function Home() {
               />
             </div>
             <div className="flex flex-col justify-center items-center">
-              <Accordion type="multiple" className="w-96">
+              <Accordion type="multiple">
                 <AccordionItem className="flex flex-col" value="item-1">
                   <AccordionTrigger>Choose Tense</AccordionTrigger>
                   <AccordionContent>

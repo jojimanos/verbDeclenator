@@ -1,11 +1,11 @@
-import React from "react";
-import imperfectExport from "./imperfect/export";
+import React, { act } from "react";
 import errorMessage from "./present/errorMessage";
-import presentDeclension from "./present/mood";
-import aoristDeclension from "./aorist/mood";
-import futureDeclension from "./future/mood";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PresentDeclension from "./present/mood";
+import ImperfectExport from "./imperfect/export";
+import FutureDeclension from "./future/mood";
+import AoristDeclension from "./aorist/mood";
+import CapitalizeFirstLetter from "@/utils/CapitaliseFirstLetter";
 
 function output({
   verb,
@@ -34,49 +34,95 @@ function output({
   future: boolean;
   aorist: boolean;
 }) {
+  let mood = ["Indicative", "Subjunctive", "Optative", "Imperative"];
+
+  const itemsToRender = [
+    {
+      verb: present,
+      title: "present",
+      item: (
+        <PresentDeclension
+          verb={verb}
+          active={active}
+          passive={passive}
+          middle={middle}
+          indicative={indicative}
+          subjunctive={subjunctive}
+          optative={optative}
+          imperative={imperative}
+          mood={mood}
+        />
+      ),
+    },
+    {
+      verb: imperfect,
+      title: "imperfect",
+      item: (
+        <ImperfectExport
+          verb={verb}
+          active={active}
+          passive={passive}
+          middle={middle}
+          indicative={indicative}
+          mood={mood}
+        />
+      ),
+    },
+    {
+      verb: future,
+      title: "future",
+      item: (
+        <FutureDeclension
+          verb={verb}
+          active={active}
+          passive={passive}
+          middle={middle}
+          indicative={indicative}
+          optative={optative}
+          mood={mood}
+        />
+      ),
+    },
+    {
+      verb: aorist,
+      title: "aorist",
+      item: (
+        <AoristDeclension
+          verb={verb}
+          active={active}
+          passive={passive}
+          middle={middle}
+          indicative={indicative}
+          subjunctive={subjunctive}
+          optative={optative}
+          imperative={imperative}
+          mood={mood}
+        />
+      ),
+    },
+  ];
+
   return (
     <div>
-      {present && (
-        <p>
-          <PresentDeclension
-            verb={verb}
-            active={active}
-            passive={passive}
-            middle={middle}
-            indicative={indicative}
-            subjunctive={subjunctive}
-            optative={optative}
-            imperative={imperative}
-          />
-        </p>
-      )}
-      {/* {imperfect && <p>{imperfectExport(verb, active, middle, passive)}</p>}
-      {future && (
-        <p>
-          {futureDeclension(
-            verb,
-            active,
-            middle,
-            passive,
-            indicative,
-            optative
-          )}
-        </p>
-      )}
-      {aorist && (
-        <p>
-          {aoristDeclension(
-            verb,
-            active,
-            middle,
-            passive,
-            indicative,
-            subjunctive,
-            optative,
-            imperative
-          )}
-        </p>
-      )} */}
+      {itemsToRender.map(({ verb, title, item }, index) => {
+        if (verb) {
+          return (
+            <Card
+              className="flex flex-col justify-center items-center mt-8"
+              key={index}
+            >
+              <CardHeader className="flex flex-col justify-center items-center">
+                <CardTitle>{CapitalizeFirstLetter(title)}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col flex-wrap">
+                {item}
+              </CardContent>
+            </Card>
+          );
+        } else {
+          return null;
+        }
+      })}
     </div>
   );
 }
