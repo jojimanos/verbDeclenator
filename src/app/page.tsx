@@ -179,8 +179,11 @@ export default function Home() {
                 <AccordionItem className="flex flex-col" value="item-1">
                   <AccordionTrigger>Choose Tense</AccordionTrigger>
                   <AccordionContent>
-                    {tenses.map((t: string) => (
-                      <div className="flex flex-row items-start space-x-3 space-y-2">
+                    {tenses.map((t: string, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row items-start space-x-3 space-y-2"
+                      >
                         <Checkbox
                           required
                           id={t}
@@ -205,8 +208,11 @@ export default function Home() {
                     <h3>Voice</h3>
                   </AccordionTrigger>
                   <AccordionContent>
-                    {voices.map((v: string) => (
-                      <div className="flex flex-row items-start space-x-3 space-y-2">
+                    {voices.map((v: string, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row items-start space-x-3 space-y-2"
+                      >
                         <Checkbox
                           required
                           id={v}
@@ -231,8 +237,11 @@ export default function Home() {
                     <h3>Mood</h3>
                   </AccordionTrigger>
                   <AccordionContent>
-                    {moods.map((m: string) => (
-                      <div className="flex flex-row items-start space-x-3 space-y-2">
+                    {moods.map((m: string, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row items-start space-x-3 space-y-2"
+                      >
                         <Checkbox
                           required
                           id={m}
